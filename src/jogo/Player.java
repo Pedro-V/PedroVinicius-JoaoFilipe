@@ -1,4 +1,4 @@
-package java;
+package jogo;
 import java.util.Random;
 
 public class Player {
@@ -30,6 +30,17 @@ public class Player {
 
     public void recebe_cura(int quant_cura) {
         pontos_vida += quant_cura;
+        if (pontos_vida > 10) 
+            // limitamos a quantidade máxima de HP a 10
+            pontos_vida = 10;
     }
-    
+
+    public int getPontos_dano() {
+        return pontos_dano;
+    }
+
+    public int getPontos_vida() {
+        return pontos_vida;
+    }
+
 }

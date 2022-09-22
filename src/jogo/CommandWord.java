@@ -5,7 +5,7 @@
  * @author  Michael Kölling and David J. Barnes
  * @version 2016.02.29
  */
-package java;
+package jogo;
 public enum CommandWord
 {
     // A value for each command word along with its

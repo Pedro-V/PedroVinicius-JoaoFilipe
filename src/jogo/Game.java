@@ -14,7 +14,7 @@
  * @author  Michael Kölling and David J. Barnes
  * @version 2016.02.29
  */
-package java;
+package jogo;
 public class Game 
 {
     private Parser parser;

@@ -18,7 +18,7 @@
  */
 
 
-package java;
+package jogo;
 public class Command
 {
     private CommandWord commandWord;

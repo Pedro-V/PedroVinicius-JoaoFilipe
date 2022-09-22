@@ -1,4 +1,4 @@
-package java;
+package jogo;
 import java.util.Random;
 
 public class Monster {
@@ -29,5 +29,13 @@ public class Monster {
     // Método que subtrai o dano sofrido dos pontos de vida do monstro
     public void sofre_dano(int dano_sofrido){
         pontos_vida -= dano_sofrido;
+    }
+
+    public int getPontos_dano() {
+        return pontos_dano;
+    }
+
+    public int getPontos_vida() {
+        return pontos_vida;
     }
 }

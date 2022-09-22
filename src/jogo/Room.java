@@ -1,4 +1,4 @@
-package java;
+package jogo;
 import java.util.HashMap;
 import java.util.Set;
 
