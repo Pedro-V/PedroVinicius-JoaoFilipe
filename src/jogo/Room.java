@@ -20,8 +20,11 @@ public class Room
 {
     private String description;
     private HashMap<String, Room> exits;        // stores exits of this room.
-    private String atributo;
+    private Attribute atributo;
     private Monster monstro;
+    private boolean atributo_finalizado;
+
+
 
     /**
      * Create a room described "description". Initially, it has
@@ -35,13 +38,12 @@ public class Room
         exits = new HashMap<>();
     }
 
-    public Room(String description, String atributo) 
+    public Room(String description, Attribute atributo) 
     {
         this.description = description;
         this.atributo = atributo;
-        if (atributo.equals("Monstro"))
-            // Criamos um monstro para essa sala
-            monstro = new Monster();
+        ativaAtributo();
+        
         exits = new HashMap<>();
     }
 
@@ -62,6 +64,25 @@ public class Room
     public String getShortDescription()
     {
         return description;
+    }
+
+    /**
+     * Ativa o atributo relacionado a instância de uma sala.
+     */
+    private void ativaAtributo() {
+        switch (atributo) {
+            case MONSTER:
+                monstro = new Monster();
+                atributo_finalizado = false;
+                break;
+            case CHEFE:
+                monstro = new Monster(true);
+                atributo_finalizado = false;
+                break;
+            default:
+                atributo_finalizado = false;
+                break;
+        }
     }
 
     /**
@@ -90,12 +111,23 @@ public class Room
         return returnString;
     }
 
-    public boolean temMonstro() {
-        return (atributo != null && atributo.equals("monstro"));
+    public boolean atributoFinalizado() {
+        return atributo_finalizado;
     }
 
+    public boolean temMonstro() {
+        return atributo.equals(Attribute.MONSTER) || atributo.equals(Attribute.CHEFE);
+    }
+
+    /**
+     * 
+     * @return O objeto monstro, se a sala tiver um monstro. Caso contrário, null;
+     */
     public Monster getMonstro() {
-        return monstro;
+        if (temMonstro()){
+            return monstro;
+        }
+        return null;
     }
     /**
      * Return the room that is reached if we go from this room in direction
@@ -108,4 +140,3 @@ public class Room
         return exits.get(direction);
     }
 }
-

@@ -39,9 +39,9 @@ public class Player {
     }
 
     private String ataque (Monster monstro) {
-        // possível acerto
         in_combat = true;
-        String resultado = new String();        
+        String resultado = new String(); 
+        // possível acerto       
         if (gerador.nextBoolean()) {
             // possível crítico
             if (gerador.nextBoolean()) {
@@ -98,6 +98,9 @@ public class Player {
         }
     }
 
+    /* Método que retorna se o jogador está em combate
+    Um jogador está em combate quando existe um monstro vivo na mesma sala que ele
+     */
     public boolean isInCombat() {
         return in_combat;
     }
