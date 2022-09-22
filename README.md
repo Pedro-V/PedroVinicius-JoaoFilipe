@@ -25,7 +25,7 @@
   * ~~Criar classe Monster~~
   * ~~Criar classe Player~~
   * Modificar classe Room para incluir atributos/característica especial da sala
-  * Traduzir e adaptar textos do jogo
+  * ~~Traduzir e adaptar textos do jogo~~
 
 ## Referências
 * Objects First with Java: A Practical Introduction using BlueJ
