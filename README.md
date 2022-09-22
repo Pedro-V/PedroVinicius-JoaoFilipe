@@ -13,7 +13,6 @@
 
 * Geral (Pegue algum e coloque no seu campo)
   * Mover o comportamento da classe Game pra essa classe Player
-  * Criar case para o comando ATTACK;
   * Implementar funcionalidade para o jogador só poder sair duma sala desde que não esteja mais em combate (Ou seja, derrotou o monstro daquela sala)
 
 * João
@@ -26,6 +25,7 @@
   * ~~Criar classe Player~~
   * Modificar classe Room para incluir atributos/característica especial da sala
   * ~~Traduzir e adaptar textos do jogo~~
+  * ~~Criar case para o comando ATTACK~~
 
 ## Referências
 * Objects First with Java: A Practical Introduction using BlueJ
