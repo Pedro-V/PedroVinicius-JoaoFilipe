@@ -13,6 +13,7 @@ public class Player {
         in_combat = false;
     }
 
+
     // overloading do construtor: Opcionalmente criamos com uma sala inicial
     public Player(Room sala_inicial) {
         pontos_dano = 1;
@@ -96,6 +97,11 @@ public class Player {
             System.out.println(sala_atual.getLongDescription());
         }
     }
+
+    public boolean isInCombat() {
+        return in_combat;
+    }
+
 
     public int getPontos_dano() {
         return pontos_dano;
