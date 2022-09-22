@@ -2,8 +2,8 @@
 
 ## Desenvolvedores
 
-* Pedro Vinícius
-* João Filipe
+* [Pedro Vinícius](https://github.com/Pedro-V)
+* [João Filipe](https://github.com/jfasr)
 
 ## Mapa
 
