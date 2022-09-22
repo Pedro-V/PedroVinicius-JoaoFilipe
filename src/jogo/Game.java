@@ -19,6 +19,8 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
+    // Caso queiramos generalizar o jogo para N jogadores, poderíamos implementar uma ArrayList aqui
+    private Player jogador;
 
     /**
      * Create the game and initialise its internal map.
@@ -35,15 +37,15 @@ public class Game
         Room entrada, grandeHall, sotao, biblioteca, enfermaria, porao, jardim, saladeJantar, igrejaAntiga;
 
         // create the rooms
-        entrada = new Room("Entrada da masmorra");
-        grandeHall = new Room("Saguão do castelo");
-        sotao = new Room("Sotão empoeirado");
-        biblioteca = new Room("Biblioteca antiga");
-        enfermaria = new Room("Enfermaria");
-        porao = new Room("Porão do castelo");
-        jardim = new Room("Jardim de estátuas");
-        saladeJantar = new Room("Grande sala de jantar");
-        igrejaAntiga = new Room("Igreja mal assombrada");
+        entrada = new Room("na entrada da masmorra");
+        grandeHall = new Room("no saguão do castelo");
+        sotao = new Room("no sotão empoeirado");
+        biblioteca = new Room("na biblioteca antiga");
+        enfermaria = new Room("na enfermaria");
+        porao = new Room("no porão do castelo");
+        jardim = new Room("no jardim de estátuas");
+        saladeJantar = new Room("na grande sala de jantar");
+        igrejaAntiga = new Room("na igreja mal assombrada");
 
         // initialise room exits
         entrada.setExit("leste", grandeHall);
@@ -70,7 +72,7 @@ public class Game
 
         igrejaAntiga.setExit("sul", enfermaria);
 
-        currentRoom = entrada; // start game outside
+        jogador = new Player(entrada);
     }
 
     /**
@@ -122,8 +124,12 @@ public class Game
                 printHelp();
                 break;
 
+            case ATTACK:
+                jogador.entra_combate();
+                break;
+
             case GO:
-                goRoom(command);
+                jogador.goRoom(command);
                 break;
 
             case QUIT:
@@ -146,30 +152,6 @@ public class Game
         System.out.println();
         System.out.println("Seus comandos são:");
         parser.showCommands();
-    }
-
-    /**
-     * Try to go in one direction. If there is an exit, enter the new
-     * room, otherwise print an error message.
-     */
-    private void goRoom(Command command) {
-        if (!command.hasSecondWord()) {
-            // if there is no second word, we don't know where to go...
-            System.out.println("Ir aonde?");
-            return;
-        }
-
-        String direction = command.getSecondWord();
-
-        // Try to leave current room.
-        Room nextRoom = currentRoom.getExit(direction);
-
-        if (nextRoom == null) {
-            System.out.println("Não há porta nessa direção!");
-        } else {
-            currentRoom = nextRoom;
-            System.out.println(currentRoom.getLongDescription());
-        }
     }
 
     /**
