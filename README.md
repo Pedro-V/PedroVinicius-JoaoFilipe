@@ -14,6 +14,7 @@
 * Geral (Pegue algum e coloque no seu campo)
   * Mover o comportamento da classe Game pra essa classe Player
   * Criar case para o comando ATTACK;
+  * Implementar funcionalidade para o jogador só poder sair duma sala desde que não esteja mais em combate (Ou seja, derrotou o monstro daquela sala)
 
 * João
   * Finalizar a adaptação da classe `Game`
