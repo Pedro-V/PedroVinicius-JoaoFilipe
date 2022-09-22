@@ -35,40 +35,40 @@ public class Game
         Room entrada, grandeHall, sotao, biblioteca, enfermaria, porao, jardim, saladeJantar, igrejaAntiga;
 
         // create the rooms
-        entrada = new Room("Entrada do masmorra");
+        entrada = new Room("Entrada da masmorra");
         grandeHall = new Room("Saguão do castelo");
-        sotao = new Room("Sotao empoeirado");
+        sotao = new Room("Sotão empoeirado");
         biblioteca = new Room("Biblioteca antiga");
         enfermaria = new Room("Enfermaria");
-        porao = new Room("Porao do castelo");
-        jardim = new Room("Jardim de estatuas");
+        porao = new Room("Porão do castelo");
+        jardim = new Room("Jardim de estátuas");
         saladeJantar = new Room("Grande sala de jantar");
         igrejaAntiga = new Room("Igreja mal assombrada");
 
         // initialise room exits
-        entrada.setExit("east", grandeHall);
+        entrada.setExit("leste", grandeHall);
 
-        grandeHall.setExit("north", biblioteca);
-        grandeHall.setExit("east", saladeJantar);
+        grandeHall.setExit("norte", biblioteca);
+        grandeHall.setExit("leste", saladeJantar);
 
-        biblioteca.setExit("north", sotao);
-        biblioteca.setExit("east", jardim);
-        biblioteca.setExit("south", grandeHall);
+        biblioteca.setExit("norte", sotao);
+        biblioteca.setExit("leste", jardim);
+        biblioteca.setExit("sul", grandeHall);
 
-        saladeJantar.setExit("west", grandeHall);
-        saladeJantar.setExit("east", enfermaria);
-        saladeJantar.setExit("south", porao);
+        saladeJantar.setExit("oeste", grandeHall);
+        saladeJantar.setExit("leste", enfermaria);
+        saladeJantar.setExit("sul", porao);
 
-        porao.setExit("north", saladeJantar);
+        porao.setExit("norte", saladeJantar);
 
-        enfermaria.setExit("north", igrejaAntiga);
-        enfermaria.setExit("west", saladeJantar);
+        enfermaria.setExit("norte", igrejaAntiga);
+        enfermaria.setExit("oeste", saladeJantar);
 
-        sotao.setExit("south", biblioteca);
+        sotao.setExit("sul", biblioteca);
 
-        jardim.setExit("west", biblioteca);
+        jardim.setExit("oeste", biblioteca);
 
-        igrejaAntiga.setExit("south", enfermaria);
+        igrejaAntiga.setExit("sul", enfermaria);
 
         currentRoom = entrada; // start game outside
     }
@@ -87,7 +87,7 @@ public class Game
             Command command = parser.getCommand();
             finished = processCommand(command);
         }
-        System.out.println("Thank you for playing.  Good bye.");
+        System.out.println("Obrigado por jogar! Até.");
     }
 
     /**
@@ -95,9 +95,9 @@ public class Game
      */
     private void printWelcome() {
         System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
-        System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
+        System.out.println("Bem vindo ao Castelo Poxim");
+        System.out.println("Castelo Poxim é um jogo room-to-room de aventura baseado no terminal");
+        System.out.println("Digite '" + CommandWord.HELP + "' se precisar de ajuda.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
     }
@@ -115,7 +115,7 @@ public class Game
 
         switch (commandWord) {
             case UNKNOWN:
-                System.out.println("I don't know what you mean...");
+                System.out.println("Não entendi o que você quis dizer...");
                 break;
 
             case HELP:
@@ -141,10 +141,10 @@ public class Game
      * command words.
      */
     private void printHelp() {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
+        System.out.println("Você está perdido, sozinho e caminha");
+        System.out.println("pelo castelo.");
         System.out.println();
-        System.out.println("Your command words are:");
+        System.out.println("Seus comandos são:");
         parser.showCommands();
     }
 
@@ -155,7 +155,7 @@ public class Game
     private void goRoom(Command command) {
         if (!command.hasSecondWord()) {
             // if there is no second word, we don't know where to go...
-            System.out.println("Go where?");
+            System.out.println("Ir aonde?");
             return;
         }
 
@@ -165,7 +165,7 @@ public class Game
         Room nextRoom = currentRoom.getExit(direction);
 
         if (nextRoom == null) {
-            System.out.println("There is no door!");
+            System.out.println("Não há porta nessa direção!");
         } else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
@@ -180,10 +180,10 @@ public class Game
      */
     private boolean quit(Command command) {
         if (command.hasSecondWord()) {
-            System.out.println("Quit what?");
+            System.out.println("Sair da onde?");
             return false;
         } else {
-            return true; // signal that we want to quit
+            return true; // sinaliza que queremos sair
         }
     }
 }
