@@ -13,7 +13,7 @@ public class Monster {
 
     // Overloading do construtor: Se uma string for informada, é assumido
     // que se trata de um boss
-    public Monster(String is_boss) {
+    public Monster(boolean is_boss) {
         pontos_dano = 2;
         pontos_vida = 8;
     }
