@@ -14,14 +14,9 @@
  * @author Michael Kölling and David J. Barnes
  * @version 2016.02.29
  */
-<<<<<<< HEAD:src/jogo/Game.java
 package jogo;
 public class Game 
 {
-=======
-
-public class Game {
->>>>>>> c574b7c3114cc872d3f6228bc6d9c1b2b7e7dc27:src/java/Game.java
     private Parser parser;
     private Room currentRoom;
 
