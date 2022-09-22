@@ -60,7 +60,7 @@ public class Room
      */
     public String getLongDescription()
     {
-        return "You are " + description + ".\n" + getExitString();
+        return "Você está " + description + ".\n" + getExitString();
     }
 
     /**
@@ -70,7 +70,7 @@ public class Room
      */
     private String getExitString()
     {
-        String returnString = "Exits:";
+        String returnString = "Saídas:";
         Set<String> keys = exits.keySet();
         for(String exit : keys) {
             returnString += " " + exit;
