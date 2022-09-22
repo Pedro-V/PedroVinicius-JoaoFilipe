@@ -147,8 +147,7 @@ public class Game
      * command words.
      */
     private void printHelp() {
-        System.out.println("Você está perdido, sozinho e caminha");
-        System.out.println("pelo castelo.");
+        System.out.println("Você está perdido, sozinho e caminha pelo castelo.");
         System.out.println();
         System.out.println("Seus comandos são:");
         parser.showCommands();

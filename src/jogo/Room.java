@@ -91,7 +91,7 @@ public class Room
     }
 
     public boolean temMonstro() {
-        return atributo.equals("monstro");
+        return (atributo != null && atributo.equals("monstro"));
     }
 
     public Monster getMonstro() {
