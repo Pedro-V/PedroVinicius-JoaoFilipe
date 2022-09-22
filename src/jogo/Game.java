@@ -18,7 +18,7 @@ package jogo;
 public class Game 
 {
     private Parser parser;
-    private Room currentRoom;
+    //private Room currentRoom;
     // Caso queiramos generalizar o jogo para N jogadores, poderíamos implementar uma ArrayList aqui
     private Player jogador;
 
@@ -101,7 +101,7 @@ public class Game
         System.out.println("Castelo Poxim é um jogo room-to-room de aventura baseado no terminal");
         System.out.println("Digite '" + CommandWord.HELP + "' se precisar de ajuda.");
         System.out.println();
-        System.out.println(currentRoom.getLongDescription());
+        System.out.println(jogador.getSala_atual().getLongDescription());
     }
 
     /**

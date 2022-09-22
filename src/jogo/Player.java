@@ -21,6 +21,10 @@ public class Player {
         in_combat = false;
     }
 
+    public Room getSala_atual() {
+        return sala_atual;
+    }
+
     public void entra_combate() {
         if (sala_atual.temMonstro()) {
             Monster monstro = sala_atual.getMonstro();
