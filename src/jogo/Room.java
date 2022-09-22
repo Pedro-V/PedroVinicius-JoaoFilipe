@@ -20,6 +20,8 @@ public class Room
 {
     private String description;
     private HashMap<String, Room> exits;        // stores exits of this room.
+    private String atributo;
+    private Monster monstro;
 
     /**
      * Create a room described "description". Initially, it has
@@ -30,6 +32,16 @@ public class Room
     public Room(String description) 
     {
         this.description = description;
+        exits = new HashMap<>();
+    }
+
+    public Room(String description, String atributo) 
+    {
+        this.description = description;
+        this.atributo = atributo;
+        if (atributo.equals("Monstro"))
+            // Criamos um monstro para essa sala
+            monstro = new Monster();
         exits = new HashMap<>();
     }
 
@@ -78,6 +90,13 @@ public class Room
         return returnString;
     }
 
+    public boolean temMonstro() {
+        return atributo.equals("monstro");
+    }
+
+    public Monster getMonstro() {
+        return monstro;
+    }
     /**
      * Return the room that is reached if we go from this room in direction
      * "direction". If there is no room in that direction, return null.
