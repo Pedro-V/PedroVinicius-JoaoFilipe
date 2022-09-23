@@ -15,11 +15,12 @@
  * @version 2016.02.29
  */
 package jogo;
-public class Game 
-{
+
+public class Game {
     private Parser parser;
-    //private Room currentRoom;
-    // Caso queiramos generalizar o jogo para N jogadores, poderíamos implementar uma ArrayList aqui
+    // private Room currentRoom;
+    // Caso queiramos generalizar o jogo para N jogadores, poderíamos implementar
+    // uma ArrayList aqui
     private Player jogador;
 
     /**
@@ -39,13 +40,13 @@ public class Game
         // create the rooms
         entrada = new Room("na entrada da masmorra");
         grandeHall = new Room("no saguão do castelo");
-        sotao = new Room("no sotão empoeirado");
-        biblioteca = new Room("na biblioteca antiga");
-        enfermaria = new Room("na enfermaria");
-        porao = new Room("no porão do castelo");
-        jardim = new Room("no jardim de estátuas");
-        saladeJantar = new Room("na grande sala de jantar");
-        igrejaAntiga = new Room("na igreja mal assombrada");
+        sotao = new Room("no sotão empoeirado", Attribute.ARMADILHA);
+        biblioteca = new Room("na biblioteca antiga", Attribute.MONSTER);
+        enfermaria = new Room("na enfermaria", Attribute.CURA);
+        porao = new Room("no porão do castelo", Attribute.MONSTER);
+        jardim = new Room("no jardim de estátuas", Attribute.CURA);
+        saladeJantar = new Room("na grande sala de jantar", Attribute.QUIZ);
+        igrejaAntiga = new Room("na igreja mal assombrada", Attribute.CHEFE);
 
         // initialise room exits
         entrada.setExit("leste", grandeHall);
