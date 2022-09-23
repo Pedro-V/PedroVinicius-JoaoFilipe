@@ -1,4 +1,5 @@
 package jogo;
+
 import java.util.Random;
 
 public class Player {
@@ -12,7 +13,6 @@ public class Player {
         pontos_vida = 10;
         in_combat = false;
     }
-
 
     // overloading do construtor: Opcionalmente criamos com uma sala inicial
     public Player(Room sala_inicial) {
@@ -29,47 +29,44 @@ public class Player {
     public void entra_combate() {
         if (sala_atual.temMonstro()) {
             Monster monstro = sala_atual.getMonstro();
-            if (monstro.getPontos_vida() <= 0) 
+            if (monstro.getPontos_vida() <= 0)
                 System.out.println("O monstro dessa sala já está morto.");
             else
                 System.out.println(ataque(monstro));
-        } 
-        else
+        } else
             System.out.println("Não há monstros nessa sala.");
     }
 
-    private String ataque (Monster monstro) {
+    private String ataque(Monster monstro) {
         in_combat = true;
-        String resultado = new String(); 
-        // possível acerto       
+        String resultado = new String();
+        // possível acerto
         if (gerador.nextBoolean()) {
             // possível crítico
             if (gerador.nextBoolean()) {
                 monstro.sofre_dano(pontos_dano * 2);
                 resultado = "Seu ataque foi crítico! Ele deu o dobro de dano (" + pontos_dano * 2 + ")";
-            }
-            else {
+            } else {
                 monstro.sofre_dano(pontos_dano);
                 resultado = "Seu ataque acertou o monstro!";
             }
-            if (monstro.getPontos_vida() <= 0){
+            if (monstro.getPontos_vida() <= 0) {
                 resultado += "\nO seu ataque matou o monstro.";
                 in_combat = false;
             }
-        }
-        else
+        } else
             resultado = "Que pena, seu ataque não acertou o monstro!";
         return resultado;
     }
 
     // Método que subtrai o dano sofrido dos pontos de vida do monstro
-    public void sofre_dano(int dano_sofrido){
+    public void sofre_dano(int dano_sofrido) {
         pontos_vida -= dano_sofrido;
     }
 
     public void recebe_cura(int quant_cura) {
         pontos_vida += quant_cura;
-        if (pontos_vida > 10) 
+        if (pontos_vida > 10)
             // limitamos a quantidade máxima de HP a 10
             pontos_vida = 10;
     }
@@ -92,19 +89,24 @@ public class Player {
 
         if (nextRoom == null) {
             System.out.println("Não há porta nessa direção!");
+        } else if (sala_atual.temMonstro()) {
+            System.out.println("Há um monstro pra derrotar aqui!");
+        } else if (in_combat) {
+            System.out.println("Nada de fugir. É preciso primeiro derrotar o monstro!");
         } else {
             sala_atual = nextRoom;
             System.out.println(sala_atual.getLongDescription());
         }
     }
 
-    /* Método que retorna se o jogador está em combate
-    Um jogador está em combate quando existe um monstro vivo na mesma sala que ele
+    /*
+     * Método que retorna se o jogador está em combate
+     * Um jogador está em combate quando existe um monstro vivo na mesma sala que
+     * ele
      */
     public boolean isInCombat() {
         return in_combat;
     }
-
 
     public int getPontos_dano() {
         return pontos_dano;
