@@ -1,5 +1,6 @@
 package jogo;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class Monster {
     private int pontos_vida, pontos_dano;
@@ -20,6 +21,12 @@ public class Monster {
 
     // Ataca um jogador, com chance de errar
     public String ataque(Player jogador) {
+        System.out.println("O monstro se prepara para atacar...");
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            System.err.format("IOException: %s%n", e); 
+        }
         if(gerador.nextBoolean()) {
             jogador.sofre_dano(pontos_dano);
             return "O ataque do monstro te acertou!";

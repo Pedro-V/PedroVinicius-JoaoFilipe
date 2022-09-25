@@ -116,8 +116,12 @@ public class Room
         return returnString;
     }
 
-    public String ataqueMonstro(Player jogador) {
+    public String ataqueMonstro(Player jogador){
         return monstro.ataque(jogador);
+    }
+
+    public boolean monstroVivo() {
+        return monstro.getPontos_vida() > 0;
     }
 
     public boolean atributoFinalizado() {

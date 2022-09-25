@@ -34,14 +34,14 @@ public class Player {
     public void entra_combate() {
         if (sala_atual.temMonstro()) {
             Monster monstro = sala_atual.getMonstro();
-            if (monstro.getPontos_vida() <= 0)
+            if (!sala_atual.monstroVivo())
                 System.out.println("O monstro dessa sala já está morto.");
             else{
                 System.out.println(ataque(monstro));
                 System.out.println(printStats(monstro));
                 // Se o monstro estiver vivo, o monstro da sala tenta atacar
-                if (in_combat) {
-                    sala_atual.ataqueMonstro(this);
+                if (sala_atual.monstroVivo()) {
+                    System.out.println(sala_atual.ataqueMonstro(this));
                 }
             }
         } else
@@ -106,6 +106,9 @@ public class Player {
             sala_atual = nextRoom;
             System.out.println(sala_atual.getLongDescription());
             System.out.println(sala_atual.getAttributeDescription());
+            if (sala_atual.temMonstro()) {
+                in_combat = true;
+            }
         }
     }
 
