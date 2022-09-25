@@ -116,6 +116,10 @@ public class Room
         return returnString;
     }
 
+    public String ataqueMonstro(Player jogador) {
+        return monstro.ataque(jogador);
+    }
+
     public boolean atributoFinalizado() {
         return atributo_finalizado;
     }

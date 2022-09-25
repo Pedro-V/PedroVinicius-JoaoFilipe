@@ -19,11 +19,12 @@ public class Monster {
     }
 
     // Ataca um jogador, com chance de errar
-    public void ataque(Player jogador) {
+    public String ataque(Player jogador) {
         if(gerador.nextBoolean()) {
             jogador.sofre_dano(pontos_dano);
+            return "O ataque do monstro te acertou!";
         }
-        return;
+        return "Você teve sorte. O monstro errou o ataque!";
     }
 
     // Método que subtrai o dano sofrido dos pontos de vida do monstro

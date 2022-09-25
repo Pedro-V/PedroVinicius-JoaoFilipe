@@ -39,6 +39,10 @@ public class Player {
             else{
                 System.out.println(ataque(monstro));
                 System.out.println(printStats(monstro));
+                // Se o monstro estiver vivo, o monstro da sala tenta atacar
+                if (in_combat) {
+                    sala_atual.ataqueMonstro(this);
+                }
             }
         } else
             System.out.println("Não há monstros nessa sala.");
