@@ -26,7 +26,7 @@ O jogo descreve a aventura do jogador enquanto ele explora o Castelo Poxim em bu
 ## To-do (risque as feitas)
 
 * Geral (Pegue algum e coloque no seu campo)
-  * Implementar os atributos/caracteristicas especiais da sala como um ENUM
+  * Implementar o comportamento de outras salas com atributos: Quiz, Cura, Armadilha.
 
 * João
   * Finalizar a adaptação da classe `Game`
@@ -39,7 +39,8 @@ O jogo descreve a aventura do jogador enquanto ele explora o Castelo Poxim em bu
   * ~~Criar classe Player~~
   * ~~Traduzir e adaptar textos do jogo~~
   * ~~Criar case para o comando ATTACK~~
-  * Mover o comportamento da classe Game pra a classe Player
+  * ~~Implementar os atributos/caracteristicas especiais da sala como um ENUM~~
+  * ~~Mover o comportamento da classe Game pra a classe Player~~
 
 ## Referências
 * Objects First with Java: A Practical Introduction using BlueJ
