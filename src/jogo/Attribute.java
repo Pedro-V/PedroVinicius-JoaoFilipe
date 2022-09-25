@@ -3,13 +3,13 @@ package jogo;
 import java.util.HashMap;
 
 public enum Attribute {
-    MONSTER("Monstro"), CHEFE("Chefe"), CURA("Cura"), QUIZ("Quiz"), ARMADILHA("Armadilha");
+    MONSTER("Monstro"), CHEFE("Chefe"), CURA("Cura"), QUIZ("Quiz"),
+    ARMADILHA("Armadilha"), VAZIA("Vazia");
 
     private String valor;
     private String descricao;
     // As perguntas são um hash map cuja chave é uma pergunta e o valor é a resposta correta;
     private HashMap<String, String> perguntas;
-    private Monster monstro;
 
     Attribute(String valor) {
         this.valor = valor;
@@ -29,9 +29,12 @@ public enum Attribute {
                 break;
             case "Quiz":
                 perguntas = new HashMap<>();
-                perguntas.put("O que é que todo mês tem, menos abril?", "a letra o");
+                perguntas.put("Quanto vale um radiano em graus?", "57.3");
 
                 descricao = "Essa sala possui um erudita! Responda corretamente à charada e ganhe um feitiço de bola de fogo!";
+            case "Vazia":
+                descricao = "";
+                break;
         }
     }
 

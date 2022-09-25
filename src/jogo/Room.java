@@ -35,6 +35,7 @@ public class Room
     public Room(String description) 
     {
         this.description = description;
+        atributo = Attribute.VAZIA;
         exits = new HashMap<>();
     }
 
@@ -94,6 +95,10 @@ public class Room
     public String getLongDescription()
     {
         return "Você está " + description + ".\n" + getExitString();
+    }
+
+    public String getAttributeDescription() {
+        return atributo.getDescricao();
     }
 
     /**

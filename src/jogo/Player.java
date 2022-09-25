@@ -26,13 +26,20 @@ public class Player {
         return sala_atual;
     }
 
+    private String printStats(Monster monstro) {
+        return "Seus pontos de vida: " + pontos_vida + 
+        "\t\tPontos de vida do monstro: " + monstro.getPontos_vida();
+    }
+
     public void entra_combate() {
         if (sala_atual.temMonstro()) {
             Monster monstro = sala_atual.getMonstro();
             if (monstro.getPontos_vida() <= 0)
                 System.out.println("O monstro dessa sala já está morto.");
-            else
+            else{
                 System.out.println(ataque(monstro));
+                System.out.println(printStats(monstro));
+            }
         } else
             System.out.println("Não há monstros nessa sala.");
     }
@@ -89,13 +96,12 @@ public class Player {
 
         if (nextRoom == null) {
             System.out.println("Não há porta nessa direção!");
-        } else if (sala_atual.temMonstro()) {
-            System.out.println("Há um monstro pra derrotar aqui!");
         } else if (in_combat) {
             System.out.println("Nada de fugir. É preciso primeiro derrotar o monstro!");
         } else {
             sala_atual = nextRoom;
             System.out.println(sala_atual.getLongDescription());
+            System.out.println(sala_atual.getAttributeDescription());
         }
     }
 
