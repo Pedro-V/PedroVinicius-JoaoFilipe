@@ -6,8 +6,9 @@
 * [João Filipe](https://github.com/jfasr)
 
 ## Mapa
-
-<img src = "https://user-images.githubusercontent.com/99099086/191636955-5b1b66e2-6906-4f3e-a5be-a27506602950.png" width = "600px" />
+<kbd>
+  <img src = "https://user-images.githubusercontent.com/99099086/191636955-5b1b66e2-6906-4f3e-a5be-a27506602950.png" width = "600px">
+</kbd>
 
 ## Descrição do jogo
 
@@ -25,13 +26,12 @@ O jogo descreve a aventura do jogador enquanto ele explora o Castelo Poxim em bu
 ## To-do (risque as feitas)
 
 * Geral (Pegue algum e coloque no seu campo)
-  
-  * Implementar funcionalidade para o jogador só poder sair duma sala desde que não esteja mais em combate (Ou seja, derrotou o monstro daquela sala)
   * Implementar os atributos/caracteristicas especiais da sala como um ENUM
 
 * João
   * Finalizar a adaptação da classe `Game`
   * ~~Botar o mapa nesse README~~
+  * ~~Implementar funcionalidade para o jogador só poder sair duma sala desde que não esteja mais em combate (Ou seja, derrotou o monstro daquela sala)~~
 
 * Pedro
   * ~~Escrever testes~~
