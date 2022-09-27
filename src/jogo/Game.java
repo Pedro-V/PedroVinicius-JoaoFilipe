@@ -152,6 +152,9 @@ public class Game {
         System.out.println();
         System.out.println("Seus comandos são:");
         parser.showCommands();
+        System.out.println();
+        System.out.println("Sua direção:\n" + jogador.getSala_atual().getLongDescription() + "\n");
+        System.out.println("Seu status de vida:" + jogador.getPontos_vida() + "");
     }
 
     /**
