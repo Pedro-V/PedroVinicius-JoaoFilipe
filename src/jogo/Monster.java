@@ -13,8 +13,10 @@ public class Monster {
         this.pontos_vida = 3;
     }
 
-    /** Overloading do construtor: Se um boolean for informado, é assumido
+    /**
+     * Overloading do construtor: Se um boolean for informado, é assumido
      * que se trata de um boss
+     * 
      * @param is_boos: Booleano representando se está instanciando um chefe
      */
     public Monster(boolean is_boss) {
@@ -32,7 +34,7 @@ public class Monster {
         }
         if (gerador.nextBoolean()) {
             jogador.sofre_dano(pontos_dano);
-            return "O ataque do monstro te acertou! 😨";
+            return "O ataque do monstro te acertou! \uD83D\uDE28";
         }
         return "Você teve sorte. O monstro errou o ataque!";
     }
