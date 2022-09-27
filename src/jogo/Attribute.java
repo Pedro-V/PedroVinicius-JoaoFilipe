@@ -51,7 +51,7 @@ public enum Attribute {
                 valor_associado = 2;
                 break;
             case QUIZ:
-                valor_associado = 3;
+                valor_associado = 3; // valor associado com a bola de fogo
                 break;
             default:
                 valor_associado = 0;
