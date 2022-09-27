@@ -140,7 +140,7 @@ public class Room
         atributo_ativo = false;
     }
 
-    private String eruditaPergunta(Player jogador) {
+    private void eruditaPergunta(Player jogador) {
         String resultado = new String();
         // Sets são aleatórios
         for (String key : perguntas.keySet()) {
@@ -148,18 +148,14 @@ public class Room
             System.out.println(key);
             String resposta = leitor.nextLine();
             leitor.close();
-            if (resposta == perguntas.get(key))
+            if (resposta.equalsIgnoreCase(perguntas.get(key)))
                 resultado = "Resposta correta! Você recebeu um feitiço de bola de fogo";
             else
                 resultado = "Essa não é a resposta. A resposta correta é " + perguntas.get(key);
             break;
         }
 
-        return resultado;
-    }
-
-    public void desativaAtributo() {
-        atributo_ativo = false;
+        System.out.println(resultado);
     }
 
     /**
