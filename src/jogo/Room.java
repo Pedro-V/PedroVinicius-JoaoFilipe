@@ -20,9 +20,14 @@ public class Room
 {
     private String description;
     private HashMap<String, Room> exits;        // stores exits of this room.
+    /** O atributo funciona como um indicativo de quais características especiais 
+     * aquela sala possui.
+     */
     private Attribute atributo;
+    private boolean atributo_ativo;
+    // As perguntas são um hash map cujo chave é a pergunta e o valor é a resposta
+    private HashMap<String, String> perguntas;
     private Monster monstro;
-    private boolean atributo_finalizado;
 
 
 
@@ -74,16 +79,50 @@ public class Room
         switch (atributo) {
             case MONSTER:
                 monstro = new Monster();
-                atributo_finalizado = false;
+                atributo_ativo = true;
                 break;
             case CHEFE:
                 monstro = new Monster(true);
-                atributo_finalizado = false;
+                atributo_ativo = true;
                 break;
+            case QUIZ:
+                perguntas = new HashMap<>();
+                perguntas.put("Quanto vale um radiano?", "57.3");
+                perguntas.put("Qual o numero maximo de nós que uma arvore binaria de altura 4 pode ter?", "31");
+                perguntas.put("No meu jardim existe 3 pés de alface, 1 de pepino e 5 de cenoura. Quantos pés eu tenho no total?", "2");
+                atributo_ativo = true;
             default:
-                atributo_finalizado = false;
+                atributo_ativo = true;
                 break;
         }
+    }
+
+    public void usaAtributo(Player jogador) {
+        if (atributo_ativo) {
+            switch(atributo) {
+                case ARMADILHA:
+                    jogador.sofre_dano(atributo.getValor_associado());
+                    break;
+                case CURA:
+                    jogador.recebe_cura(atributo.getValor_associado());
+                    break;
+                case CHEFE:
+                case MONSTER:
+                    if (monstro.estaVivo()) {
+                            System.out.println(monstro.ataque(jogador));
+                            System.out.println(jogador.printStats(monstro));
+                        }
+
+                default:
+                    break;
+            }
+        }
+        else
+            System.out.println(atributo.getmensagemAtributoUtilizado());
+    }
+
+    public void desativaAtributo() {
+        atributo_ativo = false;
     }
 
     /**
@@ -116,16 +155,8 @@ public class Room
         return returnString;
     }
 
-    public String ataqueMonstro(Player jogador){
-        return monstro.ataque(jogador);
-    }
-
-    public boolean monstroVivo() {
-        return monstro.getPontos_vida() > 0;
-    }
-
-    public boolean atributoFinalizado() {
-        return atributo_finalizado;
+    public boolean atributoEstaAtivo() {
+        return atributo_ativo;
     }
 
     public boolean temMonstro() {

@@ -13,8 +13,10 @@ public class Monster {
         this.pontos_vida = 3;
     }
 
-    // Overloading do construtor: Se uma string for informada, é assumido
-    // que se trata de um boss
+    /** Overloading do construtor: Se um boolean for informado, é assumido
+     * que se trata de um boss
+     * @param is_boos: Booleano representando se está instanciando um chefe
+     */
     public Monster(boolean is_boss) {
         pontos_dano = 2;
         pontos_vida = 8;
@@ -42,6 +44,10 @@ public class Monster {
 
     public int getPontos_dano() {
         return pontos_dano;
+    }
+
+    public boolean estaVivo() {
+        return pontos_dano > 0;
     }
 
     public int getPontos_vida() {

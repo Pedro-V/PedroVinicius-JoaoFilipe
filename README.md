@@ -26,10 +26,8 @@ O jogo descreve a aventura do jogador enquanto ele explora o Castelo Poxim em bu
 ## To-do (risque as feitas)
 
 * Geral (Pegue algum e coloque no seu campo)
-  * Implementar a variável de atributo ativo ou não na classe `Room`
   * Implementar a bola de fogo na classe `Player`
-  * Printar uma safira em ascii ao final do jogo.
-  * Implementar o comportamento de outras salas com atributos: Quiz, Cura, Armadilha.
+  * Melhorar a documentação do código com comentários claros e eficientes
 
 * João
   * Finalizar a adaptação da classe `Game`
@@ -37,6 +35,8 @@ O jogo descreve a aventura do jogador enquanto ele explora o Castelo Poxim em bu
   * ~~Implementar funcionalidade para o jogador só poder sair duma sala desde que não esteja mais em combate (Ou seja, derrotou o monstro daquela sala)~~
 
 * Pedro
+  * ~~Implementar a variável de atributo ativo ou não na classe `Room`~~
+  * ~~Implementar o comportamento de outras salas com atributos: Quiz, Cura, Armadilha.~~
   * ~~Escrever testes~~
   * ~~Criar classe Monster~~
   * ~~Criar classe Player~~
@@ -44,6 +44,7 @@ O jogo descreve a aventura do jogador enquanto ele explora o Castelo Poxim em bu
   * ~~Criar case para o comando ATTACK~~
   * ~~Implementar os atributos/caracteristicas especiais da sala como um ENUM~~
   * ~~Mover o comportamento da classe Game pra a classe Player~~
+  * Printar uma safira em ascii ao final do jogo.
 
 ## Referências
 * Objects First with Java: A Practical Introduction using BlueJ
