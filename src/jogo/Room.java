@@ -1,5 +1,8 @@
 package jogo;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Random;
+import java.util.Scanner;
 import java.util.Set;
 
 /**
@@ -26,8 +29,9 @@ public class Room
     private Attribute atributo;
     private boolean atributo_ativo;
     // As perguntas são um hash map cujo chave é a pergunta e o valor é a resposta
-    private HashMap<String, String> perguntas;
+    private LinkedHashMap<String, String> perguntas;
     private Monster monstro;
+    Random gerador = new Random();
 
 
 
@@ -86,7 +90,7 @@ public class Room
                 atributo_ativo = true;
                 break;
             case QUIZ:
-                perguntas = new HashMap<>();
+                perguntas = new LinkedHashMap<>();
                 perguntas.put("Quanto vale um radiano?", "57.3");
                 perguntas.put("Qual o numero maximo de nós que uma arvore binaria de altura 4 pode ter?", "31");
                 perguntas.put("No meu jardim existe 3 pés de alface, 1 de pepino e 5 de cenoura. Quantos pés eu tenho no total?", "2");
@@ -105,6 +109,7 @@ public class Room
                     break;
                 case CURA:
                     jogador.recebe_cura(atributo.getValor_associado());
+                    atributo_ativo = false;
                     break;
                 case CHEFE:
                 case MONSTER:
@@ -112,13 +117,37 @@ public class Room
                             System.out.println(monstro.ataque(jogador));
                             System.out.println(jogador.printStats(monstro));
                         }
-
+                    else 
+                        atributo_ativo = false;
+                    break;
+                case QUIZ:
+                    eruditaPergunta(jogador);
+                    atributo_ativo = false;
+                    break;
                 default:
                     break;
             }
         }
         else
             System.out.println(atributo.getmensagemAtributoUtilizado());
+    }
+
+    private String eruditaPergunta(Player jogador) {
+        String resultado = new String();
+        // Sets são aleatórios
+        for (String key : perguntas.keySet()) {
+            Scanner leitor = new Scanner(System.in);
+            System.out.println(key);
+            String resposta = leitor.nextLine();
+            leitor.close();
+            if (resposta == perguntas.get(key))
+                resultado = "Resposta correta! Você recebeu um feitiço de bola de fogo";
+            else
+                resultado = "Essa não é a resposta. A resposta correta é " + perguntas.get(key);
+            break;
+        }
+
+        return resultado;
     }
 
     public void desativaAtributo() {

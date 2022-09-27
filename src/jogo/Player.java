@@ -26,7 +26,7 @@ public class Player {
         return sala_atual;
     }
 
-    private String printStats(Monster monstro) {
+    public String printStats(Monster monstro) {
         return "Seus pontos de vida: " + pontos_vida + "\u2764\uFE0F" +
                 "\t\tPontos de vida do monstro: " + monstro.getPontos_vida() + "\uD83D\uDC7A" + "\n";
     }
