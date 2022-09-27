@@ -113,15 +113,6 @@ public class Room
                     atributo_ativo = false;
                     jogador.printStats();
                     break;
-                case CHEFE:
-                case MONSTER:
-                    if (monstro.estaVivo()) {
-                            System.out.println(monstro.ataque(jogador));
-                            System.out.println(jogador.printStats(monstro));
-                        }
-                    else 
-                        atributo_ativo = false;
-                    break;
                 case QUIZ:
                     eruditaPergunta(jogador);
                     atributo_ativo = false;
@@ -132,6 +123,15 @@ public class Room
         }
         else
             System.out.println(atributo.getmensagemAtributoUtilizado());
+    }
+
+    public void ataqueMonstro(Player jogador) {
+        if (monstro.estaVivo()) {
+            System.out.println(monstro.ataque(jogador));
+            System.out.println(jogador.printStats(monstro));
+        }
+    else 
+        atributo_ativo = false;
     }
 
     private String eruditaPergunta(Player jogador) {
