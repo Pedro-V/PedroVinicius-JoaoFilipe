@@ -27,8 +27,8 @@ public class Player {
     }
 
     public String printStats(Monster monstro) {
-        return "Seus pontos de vida: " + pontos_vida + 
-        "\t\tPontos de vida do monstro: " + monstro.getPontos_vida();
+        return "Seus pontos de vida: " + pontos_vida + "❤️ " +
+                "\t\tPontos de vida do monstro: " + monstro.getPontos_vida() + "👺 " + "\n";
     }
 
     public void entra_combate() {
@@ -36,11 +36,14 @@ public class Player {
             Monster monstro = sala_atual.getMonstro();
             if (!monstro.estaVivo())
                 System.out.println("O monstro dessa sala já está morto.");
-            else{
+            else {
                 System.out.println(ataque(monstro));
                 System.out.println(printStats(monstro));
                 // Se o monstro estiver vivo, o monstro da sala tenta atacar
-                sala_atual.usaAtributo(this);
+                if (sala_atual.monstroVivo()) {
+                    System.out.println(sala_atual.ataqueMonstro(this));
+                    System.out.println(printStats(monstro));
+                }
             }
         } else
             System.out.println("Não há monstros nessa sala.");
@@ -59,8 +62,8 @@ public class Player {
                 monstro.sofre_dano(pontos_dano);
                 resultado = "Seu ataque acertou o monstro!";
             }
-            if (monstro.getPontos_vida() <= 0) {
-                resultado += "\nO seu ataque matou o monstro.";
+            if (monstro.getPontos_vida() == 0) {
+                resultado += "\nO seu ataque matou o monstro. ☠️ ";
                 in_combat = false;
             }
         } else
