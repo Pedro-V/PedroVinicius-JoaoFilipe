@@ -106,10 +106,12 @@ public class Room
             switch(atributo) {
                 case ARMADILHA:
                     jogador.sofre_dano(atributo.getValor_associado());
+                    jogador.printStats();
                     break;
                 case CURA:
                     jogador.recebe_cura(atributo.getValor_associado());
                     atributo_ativo = false;
+                    jogador.printStats();
                     break;
                 case CHEFE:
                 case MONSTER:
@@ -166,7 +168,10 @@ public class Room
     }
 
     public String getAttributeDescription() {
-        return atributo.getDescricao();
+        if (atributo_ativo)
+            return atributo.getDescricao(); 
+        else 
+            return atributo.getmensagemAtributoUtilizado();
     }
 
     /**
