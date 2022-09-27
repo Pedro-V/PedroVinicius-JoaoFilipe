@@ -30,6 +30,7 @@ O jogo descreve a aventura do jogador enquanto ele explora o Castelo Poxim em bu
   * Implementar a bola de fogo na classe `Player`
   * Printar uma safira em ascii ao final do jogo.
   * Implementar o comportamento de outras salas com atributos: Quiz, Cura, Armadilha.
+  * Melhorar a documentação do código com comentários claros e eficientes
 
 * João
   * Finalizar a adaptação da classe `Game`

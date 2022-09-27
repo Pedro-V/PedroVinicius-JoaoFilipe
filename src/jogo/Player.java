@@ -26,7 +26,7 @@ public class Player {
         return sala_atual;
     }
 
-    private String printStats(Monster monstro) {
+    public String printStats(Monster monstro) {
         return "Seus pontos de vida: " + pontos_vida + 
         "\t\tPontos de vida do monstro: " + monstro.getPontos_vida();
     }
@@ -34,15 +34,13 @@ public class Player {
     public void entra_combate() {
         if (sala_atual.temMonstro()) {
             Monster monstro = sala_atual.getMonstro();
-            if (!sala_atual.monstroVivo())
+            if (!monstro.estaVivo())
                 System.out.println("O monstro dessa sala já está morto.");
             else{
                 System.out.println(ataque(monstro));
                 System.out.println(printStats(monstro));
                 // Se o monstro estiver vivo, o monstro da sala tenta atacar
-                if (sala_atual.monstroVivo()) {
-                    System.out.println(sala_atual.ataqueMonstro(this));
-                }
+                sala_atual.usaAtributo(this);
             }
         } else
             System.out.println("Não há monstros nessa sala.");

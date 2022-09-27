@@ -1,39 +1,60 @@
 package jogo;
 
-import java.util.HashMap;
-
 public enum Attribute {
-    MONSTER("Monstro"), CHEFE("Chefe"), CURA("Cura"), QUIZ("Quiz"),
-    ARMADILHA("Armadilha"), VAZIA("Vazia");
-
-    private String valor;
+    MONSTER(), CHEFE(), CURA(), QUIZ(),
+    ARMADILHA(), VAZIA();
     private String descricao;
-    // As perguntas são um hash map cuja chave é uma pergunta e o valor é a resposta correta;
-    private HashMap<String, String> perguntas;
+    // Uma mensagem a ser mostrada caso o atributo ja tenha sido utilizado
+    private String mensagemAtributoUtilizado;
+    // Um valor associado a ação do atributo
+    private int valor_associado;
 
-    Attribute(String valor) {
-        this.valor = valor;
-        setDescricao();
+    Attribute() {
+        setDescricaoMensagem();
+        inicializaValorAssociado();
     }
 
-    private void setDescricao(){
-        switch (valor) {
-            case "Monstro":
+    private void setDescricaoMensagem(){
+        switch (this) {
+            case MONSTER:
                 descricao = "Você encontrou um monstro nessa sala! Ele tem 3 de vida e 1 de dano.\nSó após derrotar ele você pode sair dessa sala.";
+                mensagemAtributoUtilizado = "O monstro dessa sala já está morto.";
                 break;
-            case "Chefe":
+            case CHEFE:
                 descricao = "Você encontrou o chefe! Para obter a safira, você precisa derrotá-lo!\nO chefe tem 8 de vida e 2 de dano! Tome cuidado.";
+                mensagemAtributoUtilizado = "O chefe foi derrotado, parabéns!";
                 break;
-            case "Cura":
+            case CURA:
                 descricao = "Essa sala possui uma aura curadora!\nVocê automaticamente recebeu uma pequena quantia de cura!";
+                mensagemAtributoUtilizado = "";
                 break;
-            case "Quiz":
-                perguntas = new HashMap<>();
-                perguntas.put("Quanto vale um radiano em graus?", "57.3");
-
+            case QUIZ:
                 descricao = "Essa sala possui um erudita! Responda corretamente à charada e ganhe um feitiço de bola de fogo!";
-            case "Vazia":
+                mensagemAtributoUtilizado = "O erudita só faz a pergunta uma vez.";
+                break;
+            case ARMADILHA:
+                descricao = "Ao entrar nessa sala você ativou uma armadilha automática! Voce sofre uma pequena quantia de dano!";
+                mensagemAtributoUtilizado = "";
+                break;
+            case VAZIA:
                 descricao = "";
+                break;
+        }
+    }
+
+    private void inicializaValorAssociado() {
+        switch (this) {
+            case ARMADILHA:
+                valor_associado = -1;
+                break;
+            case CURA:
+                valor_associado = 2;
+                break;
+            case QUIZ:
+                valor_associado = 3;
+                break;
+            default:
+                valor_associado = 0;
                 break;
         }
     }
@@ -42,7 +63,11 @@ public enum Attribute {
         return descricao;
     }
 
-    public String toString() {
-        return valor;
+    public int getValor_associado() {
+        return valor_associado;
+    }
+
+    public String getmensagemAtributoUtilizado() {
+        return mensagemAtributoUtilizado;
     }
 }
