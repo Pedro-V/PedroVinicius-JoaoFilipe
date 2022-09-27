@@ -113,6 +113,10 @@ public class Room
                     atributo_ativo = false;
                     jogador.printStats();
                     break;
+                case CHEFE:
+                case MONSTER:
+                    jogador.setIn_combat(true);
+                    break;
                 case QUIZ:
                     eruditaPergunta(jogador);
                     atributo_ativo = false;

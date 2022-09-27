@@ -44,7 +44,7 @@ public class Player {
                 System.out.println(ataque(monstro));
                 System.out.println(printStats(monstro));
                 // Se o monstro estiver vivo, o monstro da sala tenta atacar
-                sala_atual.usaAtributo(this);
+                sala_atual.ataqueMonstro(this);
             }
         } else
             System.out.println("Não há monstros nessa sala.");
@@ -114,9 +114,7 @@ public class Player {
             sala_atual = nextRoom;
             System.out.println(sala_atual.getLongDescription());
             System.out.println(sala_atual.getAttributeDescription());
-            if (sala_atual.temMonstro() && sala_atual.atributoEstaAtivo()) {
-                in_combat = true;
-            }
+            sala_atual.usaAtributo(this);
         }
     }
 
@@ -127,6 +125,10 @@ public class Player {
      */
     public boolean isInCombat() {
         return in_combat;
+    }
+
+    public void setIn_combat(boolean in_combat) {
+        this.in_combat = in_combat;
     }
 
     public int getPontos_dano() {
