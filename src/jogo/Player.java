@@ -27,8 +27,8 @@ public class Player {
     }
 
     private String printStats(Monster monstro) {
-        return "Seus pontos de vida: " + pontos_vida + "❤️ " +
-                "\t\tPontos de vida do monstro: " + monstro.getPontos_vida() + "👺 " + "\n";
+        return "Seus pontos de vida: " + pontos_vida + "\u2764\uFE0F" +
+                "\t\tPontos de vida do monstro: " + monstro.getPontos_vida() + "\uD83D\uDC7A" + "\n";
     }
 
     public void entra_combate() {
@@ -63,7 +63,7 @@ public class Player {
                 resultado = "Seu ataque acertou o monstro!";
             }
             if (monstro.getPontos_vida() == 0) {
-                resultado += "\nO seu ataque matou o monstro. ☠️ ";
+                resultado += "\nO seu ataque matou o monstro. \u2620";
                 in_combat = false;
             }
         } else
