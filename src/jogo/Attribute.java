@@ -48,7 +48,7 @@ public enum Attribute {
     private void inicializaValorAssociado() {
         switch (valor) {
             case "Armadilha":
-                valor_associado = -1;
+                valor_associado = 1; // precisa ser positivo para decremento não positivar o valor
                 break;
             case "Cura":
                 valor_associado = 2;
@@ -71,6 +71,6 @@ public enum Attribute {
     }
 
     public String getmensagemAtributoUtilizado() {
-        return mensagemAtributoUtilizado;
+        return mensagemAtributoUtilizado + '\n';
     }
 }

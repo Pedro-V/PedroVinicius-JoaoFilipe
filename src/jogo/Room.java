@@ -115,7 +115,9 @@ public class Room
                     break;
                 case CHEFE:
                 case MONSTER:
-                    jogador.setIn_combat(true);
+                    if (monstro.estaVivo()){
+                        jogador.setIn_combat(true);
+                    }
                     break;
                 case QUIZ:
                     eruditaPergunta(jogador);
@@ -132,7 +134,7 @@ public class Room
     public void ataqueMonstro(Player jogador) {
         if (monstro.estaVivo()) {
             System.out.println(monstro.ataque(jogador));
-            System.out.println(jogador.printStats(monstro));
+            jogador.printStats(monstro);
         }
     else 
         atributo_ativo = false;
