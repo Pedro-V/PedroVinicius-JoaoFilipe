@@ -26,6 +26,9 @@ O jogo descreve a aventura do jogador enquanto ele explora o Castelo Poxim em bu
 ## To-do (risque as feitas)
 
 * Geral (Pegue algum e coloque no seu campo)
+  * Implementar a variável de atributo ativo ou não na classe `Room`
+  * Implementar a bola de fogo na classe `Player`
+  * Printar uma safira em ascii ao final do jogo.
   * Implementar o comportamento de outras salas com atributos: Quiz, Cura, Armadilha.
 
 * João
