@@ -1,6 +1,7 @@
 package jogo;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class Player {
     private int pontos_vida, pontos_dano;
@@ -26,9 +27,12 @@ public class Player {
         return sala_atual;
     }
 
+    public String printStats() {
+        return "Seus pontos de vida: " + pontos_vida + "\u2764\uFE0F";
+    }
     public String printStats(Monster monstro) {
         return "Seus pontos de vida: " + pontos_vida + "\u2764\uFE0F" +
-                "\t\tPontos de vida do monstro: " + monstro.getPontos_vida() + "\uD83D\uDC7A" + "\n";
+                "\t\tPontos de vida do monstro: " + monstro.getPontos_vida() + " \uD83D\uDC7A" + "\n";
     }
 
     public void entra_combate() {
@@ -49,6 +53,12 @@ public class Player {
     private String ataque(Monster monstro) {
         in_combat = true;
         String resultado = new String();
+        System.out.println("Você se prepara para atacar...");
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            System.err.format("IOException: %s%n", e);
+        }
         // possível acerto
         if (gerador.nextBoolean()) {
             // possível crítico
@@ -59,7 +69,7 @@ public class Player {
                 monstro.sofre_dano(pontos_dano);
                 resultado = "Seu ataque acertou o monstro!";
             }
-            if (monstro.estaVivo()) {
+            if (!monstro.estaVivo()) {
                 resultado += "\nO seu ataque matou o monstro. \u2620";
                 in_combat = false;
             }
@@ -104,7 +114,7 @@ public class Player {
             sala_atual = nextRoom;
             System.out.println(sala_atual.getLongDescription());
             System.out.println(sala_atual.getAttributeDescription());
-            if (sala_atual.temMonstro()) {
+            if (sala_atual.temMonstro() && sala_atual.atributoEstaAtivo()) {
                 in_combat = true;
             }
         }
