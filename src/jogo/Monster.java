@@ -49,7 +49,7 @@ public class Monster {
     }
 
     public boolean estaVivo() {
-        return pontos_dano > 0;
+        return pontos_vida > 0;
     }
 
     public int getPontos_vida() {
