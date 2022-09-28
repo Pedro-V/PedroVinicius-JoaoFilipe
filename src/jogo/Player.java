@@ -31,7 +31,7 @@ public class Player {
     }
 
     public void printaInfoVitoria() {
-        System.out.println("Uma luz azul brilha do corpo morto do chefe dos monstros...");
+        System.out.println("Uma luz azul brilha no corpo morto do chefe dos monstros...");
         try {
             TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
@@ -66,8 +66,7 @@ public class Player {
         if (sala_atual.getAtributo() == Attribute.CHEFE && !sala_atual.atributoEstaAtivo()) {
             printaInfoVitoria();
             return true;
-        }
-        else if (pontos_vida == 0) {
+        } else if (pontos_vida == 0) {
             System.out.println("Você morreu  \u2620 \u2620! Boa sorte na próxima vez.");
             return true;
         }
@@ -77,6 +76,7 @@ public class Player {
     public void printStats() {
         System.out.println("Seus pontos de vida: " + pontos_vida + "\u2764\uFE0F");
     }
+
     public void printStats(Monster monstro) {
         System.out.println("Seus pontos de vida: " + pontos_vida + "\u2764\uFE0F" +
                 "\t\tPontos de vida do monstro: " + monstro.getPontos_vida() + " \uD83D\uDC7A" + "\n");
@@ -109,11 +109,12 @@ public class Player {
         if (usoFeitico) {
             if (!possuiBolaFogo) {
                 resultado = "Você não possui o feitiço de bola de fogo!";
-            }
-            else {
+            } else if (gerador.nextBoolean()) {
                 int dano_bola_fogo = Attribute.BOLAFOGO.getValor_associado();
                 monstro.sofre_dano(dano_bola_fogo);
                 resultado = "Seu feitiço de bola de fogo acertou o monstro! Ele deu " + dano_bola_fogo + " de dano";
+            } else {
+                resultado = "Seu feitiço não acertou, mas você pode tentar usá-lo novamente";
             }
         }
         // possível acerto
@@ -132,6 +133,7 @@ public class Player {
                 // Caso se tratar duma sala com o feitiço de bola de fogo
                 if (sala_atual.getAtributo().equals(Attribute.BOLAFOGO)) {
                     possuiBolaFogo = true;
+                    resultado += "\nVocê ganhou o feitiço Bola de Fogo, para utlizá-lo use o comando 'feitico' quando enfrentar o próximo monstro.";
                 }
             }
         } else
@@ -202,6 +204,7 @@ public class Player {
     public boolean getPossuiBolaFogo() {
         return possuiBolaFogo;
     }
+
     public void setBola_fogo(boolean bola_fogo) {
         this.possuiBolaFogo = bola_fogo;
     }
