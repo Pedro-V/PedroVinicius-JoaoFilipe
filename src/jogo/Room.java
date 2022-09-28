@@ -103,12 +103,13 @@ public class Room
 
     public void usaAtributo(Player jogador) {
         if (atributo_ativo) {
+            System.out.println(getAttributeDescription());
             switch(atributo) {
                 case ARMADILHA:
                     jogador.sofre_dano(atributo.getValor_associado());
                     jogador.printStats();
                     break;
-                case CURA:
+                case CURA:            
                     jogador.recebe_cura(atributo.getValor_associado());
                     atributo_ativo = false;
                     jogador.printStats();
@@ -128,7 +129,7 @@ public class Room
             }
         }
         else
-            System.out.println(atributo.getmensagemAtributoUtilizado());
+            System.out.println(getAttributeDescription());
     }
 
     public void ataqueMonstro(Player jogador) {

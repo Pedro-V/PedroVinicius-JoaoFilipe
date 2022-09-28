@@ -113,7 +113,6 @@ public class Player {
         } else {
             sala_atual = nextRoom;
             System.out.println(sala_atual.getLongDescription());
-            System.out.println(sala_atual.getAttributeDescription());
             sala_atual.usaAtributo(this);
         }
     }
