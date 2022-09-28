@@ -27,6 +27,50 @@ public class Player {
         return sala_atual;
     }
 
+    public void printaInfoVitoria() {
+        System.out.println("Uma luz azul brilha do corpo morto do chefe dos monstros...");
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            System.err.format("IOException: %s%n", e);
+        }
+        System.out.println("Você encontra a safira que tanto procurava, parabéns!");
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            System.err.format("IOException: %s%n", e);
+        }
+        System.out.println("               `-+sdmhmMMhyhNMMddm`");
+        System.out.println("            .smdy+:`  `-smmNy/    :h\\");
+        System.out.println("          -yNs.          mmhmo.    Md");
+        System.out.println("        -hNo`           oM- .oNh:  :s");
+        System.out.println("      :dm+`            .Ns    `/dmo.d");
+        System.out.println("     +Mo`              hN        yMMM");
+        System.out.println("   `sN/              /dMmsssoo++///NM");
+        System.out.println("  `hN-             +md/sM.        hNM");
+        System.out.println(" .dm.            +mh:  .Ns      .dm+M");
+        System.out.println(" +My          .oNy-     sM.    :Nd.+M");
+        System.out.println(" +MM+     .:/sNd-       .Ns   sNo  sM");
+        System.out.println("`+MyMyhdddysmMoydmhs+:smdsM.+Nh-   hN");
+        System.out.println("`+M.MM:`   -Mo           hMNm/     md");
+        System.out.println("`+M  hm.   dm`         `+Nmdm+     My");
+        System.out.println("`/M:  md` /M/        -sNy:  -yNs. .Mo");
+        System.out.println(" `Nh   Nh`Nh      :smd+.      .sNyoM/");
+        System.out.println("  -mh:mh:MmNss:+sdNds:-::///++oosyN-");
+    }
+
+    public boolean checaJogoFinalizado() {
+        if (sala_atual.getAtributo() == Attribute.CHEFE && !sala_atual.atributoEstaAtivo()) {
+            printaInfoVitoria();
+            return true;
+        }
+        else if (pontos_vida == 0) {
+            System.out.println("Você morreu. Boa sorte na próxima vez");
+            return true;
+        }
+        return false;
+    }
+
     public void printStats() {
         System.out.println("Seus pontos de vida: " + pontos_vida + "\u2764\uFE0F");
     }
