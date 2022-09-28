@@ -86,10 +86,11 @@ public class Game {
         // execute them until the game is over.
 
         boolean quitting = false;
-        boolean finished = jogador.checaJogoFinalizado();
+        boolean finished = false;
         while (!quitting || !finished) {
             Command command = parser.getCommand();
             quitting = processCommand(command);
+            finished = jogador.checaJogoFinalizado();
         }
         System.out.println("Obrigado por jogar! Até.");
     }
