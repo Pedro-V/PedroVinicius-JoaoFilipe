@@ -84,13 +84,10 @@ public class Game {
 
         // Enter the main command loop. Here we repeatedly read commands and
         // execute them until the game is over.
-
-        boolean quitting = false;
         boolean finished = false;
-        while (!quitting && !finished) {
+        while (!finished) {
             Command command = parser.getCommand();
-            quitting = processCommand(command);
-            finished = jogador.checaJogoFinalizado();
+            finished = processCommand(command) || jogador.checaJogoFinalizado();
         }
         System.out.println("Obrigado por jogar! Até.");
     }
