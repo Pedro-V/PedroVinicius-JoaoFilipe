@@ -8,13 +8,13 @@ public class Player {
     private Random gerador = new Random();
     private Room sala_atual;
     private boolean in_combat;
-    private boolean bola_fogo;
+    private boolean possuiBolaFogo;
 
     public Player() {
         pontos_dano = 1;
         pontos_vida = 10;
         in_combat = false;
-        bola_fogo = false;
+        possuiBolaFogo = false;
     }
 
     // overloading do construtor: Opcionalmente criamos com uma sala inicial
@@ -23,7 +23,7 @@ public class Player {
         pontos_vida = 10;
         sala_atual = sala_inicial;
         in_combat = false;
-        bola_fogo = false;
+        possuiBolaFogo = false;
     }
 
     public Room getSala_atual() {
@@ -107,9 +107,14 @@ public class Player {
             System.err.format("IOException: %s%n", e);
         }
         if (usoFeitico) {
-            int dano_bola_fogo = Attribute.BOLAFOGO.getValor_associado();
-            monstro.sofre_dano(dano_bola_fogo);
-            resultado = "Seu feitiço de bola de fogo acertou o monstro! Ele deu " + dano_bola_fogo + "de dano";
+            if (!possuiBolaFogo) {
+                resultado = "Você não possui o feitiço de bola de fogo!";
+            }
+            else {
+                int dano_bola_fogo = Attribute.BOLAFOGO.getValor_associado();
+                monstro.sofre_dano(dano_bola_fogo);
+                resultado = "Seu feitiço de bola de fogo acertou o monstro! Ele deu " + dano_bola_fogo + " de dano";
+            }
         }
         // possível acerto
         else if (gerador.nextBoolean()) {
@@ -126,7 +131,7 @@ public class Player {
                 in_combat = false;
                 // Caso se tratar duma sala com o feitiço de bola de fogo
                 if (sala_atual.getAtributo().equals(Attribute.BOLAFOGO)) {
-                    bola_fogo = true;
+                    possuiBolaFogo = true;
                 }
             }
         } else
@@ -168,7 +173,7 @@ public class Player {
             System.out.println("Nada de fugir. É preciso primeiro derrotar o monstro!");
         } else {
             sala_atual = nextRoom;
-            System.out.println(sala_atual.getLongDescription(bola_fogo));
+            System.out.println(sala_atual.getLongDescription());
             sala_atual.usaAtributo(this);
         }
     }
@@ -194,10 +199,10 @@ public class Player {
         return pontos_vida;
     }
 
-    public boolean getBola_fogo() {
-        return bola_fogo;
+    public boolean getPossuiBolaFogo() {
+        return possuiBolaFogo;
     }
     public void setBola_fogo(boolean bola_fogo) {
-        this.bola_fogo = bola_fogo;
+        this.possuiBolaFogo = bola_fogo;
     }
 }

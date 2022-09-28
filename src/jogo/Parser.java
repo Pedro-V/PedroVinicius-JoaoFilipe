@@ -61,8 +61,8 @@ public class Parser
     /**
      * Print out a list of valid command words.
      */
-    public void showCommands()
+    public void showCommands(boolean possuiBolaFogo)
     {
-        commands.showAll();
+        commands.showAll(possuiBolaFogo);
     }
 }

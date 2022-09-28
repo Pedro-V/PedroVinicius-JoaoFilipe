@@ -59,9 +59,11 @@ public class CommandWords
     /**
      * Print all valid commands to System.out.
      */
-    public void showAll() 
+    public void showAll(boolean possuiBolaFogo) 
     {
         for(String command : validCommands.keySet()) {
+            if (!possuiBolaFogo && command.equals("feitico")) 
+                continue;
             System.out.print(command + "  ");
         }
         System.out.println();

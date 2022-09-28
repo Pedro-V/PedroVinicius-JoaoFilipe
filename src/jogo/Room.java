@@ -165,15 +165,6 @@ public class Room
     {
         return "Você está " + description + ".\n" + getExitString();
     }
-    public String getLongDescription(boolean possuiBolaFogo)
-    {
-        String extra = "";
-        if (possuiBolaFogo) {
-            extra = " feitiço";
-        }
-        return "Você está " + description + ".\n" + getExitString() + extra;
-    }
-
     public String getAttributeDescription() {
         if (atributo_ativo)
             return atributo.getDescricao(); 

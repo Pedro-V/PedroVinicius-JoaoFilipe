@@ -156,7 +156,7 @@ public class Game {
         System.out.println("Você está perdido, sozinho e caminha pelo castelo.");
         System.out.println();
         System.out.println("Seus comandos são:");
-        parser.showCommands();
+        parser.showCommands(jogador.getPossuiBolaFogo());
         System.out.println();
         System.out.println("Sua direção:\n" + jogador.getSala_atual().getLongDescription() + "\n");
         System.out.println("Seu status de vida:" + jogador.getPontos_vida() + "");
