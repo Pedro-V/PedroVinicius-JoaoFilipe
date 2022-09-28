@@ -30,7 +30,7 @@ public class Player {
         return sala_atual;
     }
 
-    public void printaInfoVitoria() {
+    private void printaInfoVitoria() {
         System.out.println("Uma luz azul brilha no corpo morto do chefe dos monstros...");
         try {
             TimeUnit.SECONDS.sleep(2);
@@ -183,15 +183,6 @@ public class Player {
         }
     }
 
-    /*
-     * Método que retorna se o jogador está em combate
-     * Um jogador está em combate quando existe um monstro vivo na mesma sala que
-     * ele
-     */
-    public boolean isInCombat() {
-        return in_combat;
-    }
-
     public void setIn_combat(boolean in_combat) {
         this.in_combat = in_combat;
     }
@@ -206,9 +197,5 @@ public class Player {
 
     public boolean getPossuiBolaFogo() {
         return possuiBolaFogo;
-    }
-
-    public void setBola_fogo(boolean bola_fogo) {
-        this.possuiBolaFogo = bola_fogo;
     }
 }

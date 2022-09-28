@@ -1,9 +1,7 @@
 package jogo;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Random;
-import java.util.Scanner;
 import java.util.Set;
 
 /**
@@ -29,8 +27,6 @@ public class Room {
      */
     private Attribute atributo;
     private boolean atributo_ativo;
-    // As perguntas são um hash map cujo chave é a pergunta e o valor é a resposta
-    private LinkedHashMap<String, String> perguntas;
     private Monster monstro;
     Random gerador = new Random();
 
@@ -128,25 +124,7 @@ public class Room {
             atributo_ativo = false;
     }
 
-    private void eruditaPergunta(Player jogador) {
-        String resultado = new String();
-        // Sets são aleatórios
-        for (String key : perguntas.keySet()) {
-            Scanner leitor = new Scanner(System.in);
-            System.out.println(key);
-            String resposta = leitor.nextLine();
-            leitor.close();
-            if (resposta.equalsIgnoreCase(perguntas.get(key)))
-                resultado = "Resposta correta! Você recebeu um feitiço de bola de fogo";
-            else
-                resultado = "Essa não é a resposta. A resposta correta é " + perguntas.get(key);
-            break;
-        }
-
-        System.out.println(resultado);
-    }
-
-    /**
+     /**
      * Return a description of the room in the form:
      * You are in the kitchen.
      * Exits: north west
@@ -185,8 +163,7 @@ public class Room {
     }
 
     public boolean temMonstro() {
-        return atributo.equals(Attribute.MONSTER) || atributo.equals(Attribute.CHEFE)
-                || atributo.equals(Attribute.BOLAFOGO);
+        return monstro != null;
     }
 
     /**
