@@ -43,7 +43,7 @@ public class Game {
         sotao = new Room("no sotão empoeirado", Attribute.ARMADILHA);
         biblioteca = new Room("na biblioteca antiga", Attribute.MONSTER);
         enfermaria = new Room("na enfermaria", Attribute.CURA);
-        porao = new Room("no porão do castelo", Attribute.MONSTER);
+        porao = new Room("no porão do castelo", Attribute.BOLAFOGO);
         jardim = new Room("no jardim de estátuas", Attribute.CURA);
         saladeJantar = new Room("na grande sala de jantar");
         igrejaAntiga = new Room("na igreja mal assombrada", Attribute.CHEFE);

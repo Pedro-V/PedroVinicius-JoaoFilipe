@@ -110,14 +110,11 @@ public class Room
                     jogador.printStats();
                     break;
                 case CHEFE:
+                case BOLAFOGO:
                 case MONSTER:
                     if (monstro.estaVivo()){
                         jogador.setIn_combat(true);
                     }
-                    break;
-                case BOLAFOGO:
-                    eruditaPergunta(jogador);
-                    atributo_ativo = false;
                     break;
                 default:
                     break;
@@ -192,7 +189,7 @@ public class Room
     }
 
     public boolean temMonstro() {
-        return atributo.equals(Attribute.MONSTER) || atributo.equals(Attribute.CHEFE);
+        return atributo.equals(Attribute.MONSTER) || atributo.equals(Attribute.CHEFE) || atributo.equals(Attribute.BOLAFOGO);
     }
 
     /**
