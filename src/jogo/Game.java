@@ -45,7 +45,7 @@ public class Game {
         enfermaria = new Room("na enfermaria", Attribute.CURA);
         porao = new Room("no porão do castelo", Attribute.MONSTER);
         jardim = new Room("no jardim de estátuas", Attribute.CURA);
-        saladeJantar = new Room("na grande sala de jantar", Attribute.QUIZ);
+        saladeJantar = new Room("na grande sala de jantar");
         igrejaAntiga = new Room("na igreja mal assombrada", Attribute.CHEFE);
 
         // initialise room exits
