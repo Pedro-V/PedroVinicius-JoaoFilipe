@@ -3,6 +3,7 @@ package jogo;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Random;
+import java.util.Scanner;
 import java.util.Set;
 
 /**
@@ -125,6 +126,24 @@ public class Room {
             jogador.printStats(monstro);
         } else
             atributo_ativo = false;
+    }
+
+    private void eruditaPergunta(Player jogador) {
+        String resultado = new String();
+        // Sets são aleatórios
+        for (String key : perguntas.keySet()) {
+            Scanner leitor = new Scanner(System.in);
+            System.out.println(key);
+            String resposta = leitor.nextLine();
+            leitor.close();
+            if (resposta.equalsIgnoreCase(perguntas.get(key)))
+                resultado = "Resposta correta! Você recebeu um feitiço de bola de fogo";
+            else
+                resultado = "Essa não é a resposta. A resposta correta é " + perguntas.get(key);
+            break;
+        }
+
+        System.out.println(resultado);
     }
 
     /**

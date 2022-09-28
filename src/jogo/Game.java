@@ -32,7 +32,7 @@ public class Game {
     }
 
     /**
-     * Create all the rooms and link their exits together.
+     * Salas criadas com seus respectivos atributos.
      */
     private void createRooms() {
         Room entrada, grandeHall, sotao, biblioteca, enfermaria, porao, jardim, saladeJantar, igrejaAntiga;
@@ -48,7 +48,7 @@ public class Game {
         saladeJantar = new Room("na grande sala de jantar");
         igrejaAntiga = new Room("na igreja mal assombrada", Attribute.CHEFE);
 
-        // initialise room exits
+        // Saídas disponíveis de cada sala.
         entrada.setExit("leste", grandeHall);
 
         grandeHall.setExit("norte", biblioteca);
