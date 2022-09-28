@@ -101,22 +101,15 @@ public class Player {
         int chance = gerador.nextInt(0, 5);
         in_combat = true;
         String resultado = new String();
-        System.out.println("Você se prepara para atacar...");
-        try {
-            TimeUnit.SECONDS.sleep(2);
-        } catch (InterruptedException e) {
-            System.err.format("IOException: %s%n", e);
-        }
         if (usoFeitico) {
             if (!possuiBolaFogo) {
-                resultado = "Você não possui o feitiço de bola de fogo!";
-                // possível acerto do feitico
-            } else if (gerador.nextBoolean()) {
+                return "Você não possui o feitiço de bola de fogo ou ele já foi utilizado!";
+            }
+            else {
                 int dano_bola_fogo = Attribute.BOLAFOGO.getValor_associado();
                 monstro.sofre_dano(dano_bola_fogo);
                 resultado = "Seu feitiço de bola de fogo acertou o monstro! Ele deu " + dano_bola_fogo + " de dano";
-            } else {
-                resultado = "Seu feitiço não acertou, mas você pode tentar usá-lo novamente";
+                possuiBolaFogo = false;
             }
         }
         // possível acerto
@@ -135,11 +128,19 @@ public class Player {
                 // Caso se tratar duma sala com o feitiço de bola de fogo
                 if (sala_atual.getAtributo().equals(Attribute.BOLAFOGO)) {
                     possuiBolaFogo = true;
-                    resultado += "\nVocê ganhou o feitiço Bola de Fogo, para utlizá-lo use o comando 'feitico' quando enfrentar o próximo monstro.";
+                    resultado += "\nVocê ganhou o feitiço Bola de Fogo, para utilizá-lo use o comando 'feitico' quando enfrentar o próximo monstro.";
                 }
             }
-        } else
+        } else{
             resultado = "Que pena, seu ataque não acertou o monstro!";
+        }
+
+        System.out.println("Você se prepara para atacar...");
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            System.err.format("IOException: %s%n", e);
+        }
         return resultado;
     }
 

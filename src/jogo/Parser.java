@@ -54,7 +54,6 @@ public class Parser
             }
         }
         tokenizer.close();
-
         return new Command(commands.getCommandWord(word1), word2);
     }
 
