@@ -26,6 +26,8 @@ O jogo descreve a aventura do jogador enquanto ele explora o Castelo Poxim em bu
 ## To-do (risque as feitas)
 
 * Geral (Pegue algum e coloque no seu campo)
+  * Implementar o fim do jogo quando jogador morre ou quando derrota o chefe
+  * Corrigir o comportamento das salas com atributo QUIZ
   * Implementar a bola de fogo na classe `Player`
 
 * João
