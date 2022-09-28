@@ -98,6 +98,7 @@ public class Player {
     }
 
     private String ataque(Monster monstro, boolean usoFeitico) {
+        int chance = gerador.nextInt(0, 5);
         in_combat = true;
         String resultado = new String();
         System.out.println("Você se prepara para atacar...");
@@ -119,9 +120,9 @@ public class Player {
             }
         }
         // possível acerto
-        else if (gerador.nextBoolean()) {
+        else if (chance <= 3 ) { // 80% de chance de acertar
             // possível crítico
-            if (gerador.nextBoolean()) {
+            if (chance == 1 ) { // 20% de chance de dar critico (considerando que está atacando)
                 monstro.sofre_dano(pontos_dano * 2);
                 resultado = "Seu ataque foi crítico! Ele deu o dobro de dano (" + pontos_dano * 2 + ")";
             } else {
