@@ -27,12 +27,12 @@ O jogo descreve a aventura do jogador enquanto ele explora o Castelo Poxim em bu
 
 * Geral (Pegue algum e coloque no seu campo)
   * Implementar a bola de fogo na classe `Player`
-  * Melhorar a documentação do código com comentários claros e eficientes
 
 * João
   * Finalizar a adaptação da classe `Game`
   * ~~Botar o mapa nesse README~~
   * ~~Implementar funcionalidade para o jogador só poder sair duma sala desde que não esteja mais em combate (Ou seja, derrotou o monstro daquela sala)~~
+  * Melhorar a documentação do código com comentários claros e eficientes
 
 * Pedro
   * ~~Implementar a variável de atributo ativo ou não na classe `Room`~~
