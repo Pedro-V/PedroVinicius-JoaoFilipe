@@ -81,6 +81,7 @@ public class Room
      */
     private void ativaAtributo() {
         switch (atributo) {
+            case BOLAFOGO:
             case MONSTER:
                 monstro = new Monster();
                 atributo_ativo = true;
@@ -89,12 +90,6 @@ public class Room
                 monstro = new Monster(true);
                 atributo_ativo = true;
                 break;
-            case QUIZ:
-                perguntas = new LinkedHashMap<>();
-                perguntas.put("Quanto vale um radiano?", "57.3");
-                perguntas.put("Qual o numero maximo de nós que uma arvore binaria de altura 4 pode ter?", "31");
-                perguntas.put("No meu jardim existe 3 pés de alface, 1 de pepino e 5 de cenoura. Quantos pés eu tenho no total?", "2");
-                atributo_ativo = true;
             default:
                 atributo_ativo = true;
                 break;
@@ -120,7 +115,7 @@ public class Room
                         jogador.setIn_combat(true);
                     }
                     break;
-                case QUIZ:
+                case BOLAFOGO:
                     eruditaPergunta(jogador);
                     atributo_ativo = false;
                     break;
@@ -165,9 +160,18 @@ public class Room
      *     Exits: north west
      * @return A long description of this room
      */
+
     public String getLongDescription()
     {
         return "Você está " + description + ".\n" + getExitString();
+    }
+    public String getLongDescription(boolean possuiBolaFogo)
+    {
+        String extra = "";
+        if (possuiBolaFogo) {
+            extra = " feitiço";
+        }
+        return "Você está " + description + ".\n" + getExitString() + extra;
     }
 
     public String getAttributeDescription() {
@@ -209,6 +213,10 @@ public class Room
             return monstro;
         }
         return null;
+    }
+
+    public Attribute getAtributo() {
+        return atributo;
     }
     /**
      * Return the room that is reached if we go from this room in direction

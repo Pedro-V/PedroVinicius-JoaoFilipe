@@ -87,7 +87,7 @@ public class Game {
 
         boolean quitting = false;
         boolean finished = false;
-        while (!quitting || !finished) {
+        while (!quitting && !finished) {
             Command command = parser.getCommand();
             quitting = processCommand(command);
             finished = jogador.checaJogoFinalizado();
@@ -128,9 +128,12 @@ public class Game {
                 break;
 
             case ATTACK:
-                jogador.entra_combate();
+                jogador.entra_combate(false);
                 break;
 
+            case FEITICO:
+                jogador.entra_combate(true);
+                break;
             case GO:
                 jogador.goRoom(command);
                 break;

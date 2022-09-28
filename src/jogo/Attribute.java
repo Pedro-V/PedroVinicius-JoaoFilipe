@@ -1,7 +1,7 @@
 package jogo;
 
 public enum Attribute {
-    MONSTER("Monstro"), CHEFE("Chefe"), CURA("Cura"), QUIZ("Quiz"),
+    MONSTER("Monstro"), CHEFE("Chefe"), CURA("Cura"), BOLAFOGO("Bola de Fogo"),
     ARMADILHA("Armadilha"), VAZIA("Vazia");
     private String descricao;
     private String valor;
@@ -30,9 +30,9 @@ public enum Attribute {
                 descricao = "Essa sala possui uma aura curadora!\nVocê automaticamente recebeu uma pequena quantia de cura!";
                 mensagemAtributoUtilizado = "";
                 break;
-            case "Quiz":
-                descricao = "Essa sala possui um erudita! Responda corretamente à charada e ganhe um feitiço de bola de fogo!";
-                mensagemAtributoUtilizado = "O erudita só faz a pergunta uma vez.";
+            case "Bola de Fogo":
+                descricao = "Essa sala possui um monstro de fogo! Derrote-o e ganhe um feitiço de bola de fogo!";
+                mensagemAtributoUtilizado = "O monstro de fogo foi derrotado.";
                 break;
             case "Armadilha":
                 descricao = "Ao entrar nessa sala você ativou uma armadilha automática! Voce sofre uma pequena quantia de dano!";
@@ -53,7 +53,7 @@ public enum Attribute {
             case "Cura":
                 valor_associado = 2;
                 break;
-            case "Quiz":
+            case "Bola de Fogo":
                 valor_associado = 3; // valor associado com a bola de fogo
                 break;
             default:

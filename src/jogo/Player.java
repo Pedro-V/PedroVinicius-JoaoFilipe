@@ -8,11 +8,13 @@ public class Player {
     private Random gerador = new Random();
     private Room sala_atual;
     private boolean in_combat;
+    private boolean bola_fogo;
 
     public Player() {
         pontos_dano = 1;
         pontos_vida = 10;
         in_combat = false;
+        bola_fogo = false;
     }
 
     // overloading do construtor: Opcionalmente criamos com uma sala inicial
@@ -21,6 +23,7 @@ public class Player {
         pontos_vida = 10;
         sala_atual = sala_inicial;
         in_combat = false;
+        bola_fogo = false;
     }
 
     public Room getSala_atual() {
@@ -65,7 +68,7 @@ public class Player {
             return true;
         }
         else if (pontos_vida == 0) {
-            System.out.println("Você morreu. Boa sorte na próxima vez");
+            System.out.println("Você morreu  \u2620 \u2620! Boa sorte na próxima vez.");
             return true;
         }
         return false;
@@ -79,13 +82,13 @@ public class Player {
                 "\t\tPontos de vida do monstro: " + monstro.getPontos_vida() + " \uD83D\uDC7A" + "\n");
     }
 
-    public void entra_combate() {
+    public void entra_combate(boolean usoFeitico) {
         if (sala_atual.temMonstro()) {
             Monster monstro = sala_atual.getMonstro();
             if (!monstro.estaVivo())
-                System.out.println("O monstro dessa sala já está morto.");
+                System.out.println(sala_atual.getAttributeDescription());
             else {
-                System.out.println(ataque(monstro));
+                System.out.println(ataque(monstro, usoFeitico));
                 printStats(monstro);
                 // Se o monstro estiver vivo, o monstro da sala tenta atacar
                 sala_atual.ataqueMonstro(this);
@@ -94,7 +97,7 @@ public class Player {
             System.out.println("Não há monstros nessa sala.");
     }
 
-    private String ataque(Monster monstro) {
+    private String ataque(Monster monstro, boolean usoFeitico) {
         in_combat = true;
         String resultado = new String();
         System.out.println("Você se prepara para atacar...");
@@ -103,8 +106,13 @@ public class Player {
         } catch (InterruptedException e) {
             System.err.format("IOException: %s%n", e);
         }
+        if (usoFeitico) {
+            int dano_bola_fogo = Attribute.BOLAFOGO.getValor_associado();
+            monstro.sofre_dano(dano_bola_fogo);
+            resultado = "Seu feitiço de bola de fogo acertou o monstro! Ele deu " + dano_bola_fogo + "de dano";
+        }
         // possível acerto
-        if (gerador.nextBoolean()) {
+        else if (gerador.nextBoolean()) {
             // possível crítico
             if (gerador.nextBoolean()) {
                 monstro.sofre_dano(pontos_dano * 2);
@@ -116,6 +124,10 @@ public class Player {
             if (!monstro.estaVivo()) {
                 resultado += "\nO seu ataque matou o monstro. \u2620";
                 in_combat = false;
+                // Caso se tratar duma sala com o feitiço de bola de fogo
+                if (sala_atual.getAtributo().equals(Attribute.BOLAFOGO)) {
+                    bola_fogo = true;
+                }
             }
         } else
             resultado = "Que pena, seu ataque não acertou o monstro!";
@@ -156,7 +168,7 @@ public class Player {
             System.out.println("Nada de fugir. É preciso primeiro derrotar o monstro!");
         } else {
             sala_atual = nextRoom;
-            System.out.println(sala_atual.getLongDescription());
+            System.out.println(sala_atual.getLongDescription(bola_fogo));
             sala_atual.usaAtributo(this);
         }
     }
@@ -182,4 +194,10 @@ public class Player {
         return pontos_vida;
     }
 
+    public boolean getBola_fogo() {
+        return bola_fogo;
+    }
+    public void setBola_fogo(boolean bola_fogo) {
+        this.bola_fogo = bola_fogo;
+    }
 }
