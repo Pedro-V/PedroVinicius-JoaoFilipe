@@ -64,11 +64,11 @@ public class Player {
 
     public boolean checaJogoFinalizado() {
         if (sala_atual.getAtributo() == Attribute.CHEFE && !sala_atual.atributoEstaAtivo()) {
-            printaInfoVitoria();
+            printaInfoVitoria(); // Assim que o boss (chefe) morrer o jogo é finalizado.
             return true;
         } else if (pontos_vida == 0) {
             System.out.println("Você morreu  \u2620 \u2620! Boa sorte na próxima vez.");
-            return true;
+            return true; // A outra forma de finalizar o jogo é com o player morrendo.
         }
         return false;
     }
@@ -109,6 +109,7 @@ public class Player {
         if (usoFeitico) {
             if (!possuiBolaFogo) {
                 resultado = "Você não possui o feitiço de bola de fogo!";
+                // possível acerto do feitico
             } else if (gerador.nextBoolean()) {
                 int dano_bola_fogo = Attribute.BOLAFOGO.getValor_associado();
                 monstro.sofre_dano(dano_bola_fogo);
