@@ -11,7 +11,7 @@ public enum CommandWord
     // A value for each command word along with its
     // corresponding user interface string.
     GO("ir"), QUIT("sair"), HELP("ajuda"), UNKNOWN("?"),
-    ATTACK("atacar"), FEITICO("feitiço");
+    ATTACK("atacar"), FEITICO("feitico");
     
     // The command string.
     private String commandString;
