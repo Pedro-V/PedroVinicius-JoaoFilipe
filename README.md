@@ -7,7 +7,7 @@
 
 ## Mapa
 <kbd>
-  <img src = "https://user-images.githubusercontent.com/99099086/191636955-5b1b66e2-6906-4f3e-a5be-a27506602950.png" width = "600px">
+  <img src = "https://user-images.githubusercontent.com/99099086/192665607-de9acf02-e3a0-4b66-ae49-35bf5145241d.png" width = "600px">
 </kbd>
 
 ## Descrição do jogo
