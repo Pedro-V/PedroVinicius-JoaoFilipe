@@ -104,8 +104,7 @@ public class Player {
         if (usoFeitico) {
             if (!possuiBolaFogo) {
                 return "Você não possui o feitiço de bola de fogo ou ele já foi utilizado!";
-            }
-            else {
+            } else {
                 int dano_bola_fogo = Attribute.BOLAFOGO.getValor_associado();
                 monstro.sofre_dano(dano_bola_fogo);
                 resultado = "Seu feitiço de bola de fogo acertou o monstro! Ele deu " + dano_bola_fogo + " de dano";
@@ -113,9 +112,9 @@ public class Player {
             }
         }
         // possível acerto
-        else if (chance <= 3 ) { // 80% de chance de acertar
+        else if (chance <= 3) { // 80% de chance de acertar
             // possível crítico
-            if (chance == 1 ) { // 20% de chance de dar critico (considerando que está atacando)
+            if (chance == 1) { // 20% de chance de dar critico (considerando que está atacando)
                 monstro.sofre_dano(pontos_dano * 2);
                 resultado = "Seu ataque foi crítico! Ele deu o dobro de dano (" + pontos_dano * 2 + ")";
             } else {
@@ -131,7 +130,7 @@ public class Player {
                     resultado += "\nVocê ganhou o feitiço Bola de Fogo, para utilizá-lo use o comando 'feitico' quando enfrentar o próximo monstro.";
                 }
             }
-        } else{
+        } else {
             resultado = "Que pena, seu ataque não acertou o monstro!";
         }
 
@@ -178,7 +177,7 @@ public class Player {
             System.out.println("Nada de fugir. É preciso primeiro derrotar o monstro!");
         } else {
             sala_atual = nextRoom;
-            System.out.println(sala_atual.getLongDescription());
+            System.out.print(sala_atual.getLongDescription());
             sala_atual.usaAtributo(this);
         }
     }

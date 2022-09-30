@@ -3,6 +3,7 @@ package jogo;
 public enum Attribute {
     MONSTER("Monstro"), CHEFE("Chefe"), CURA("Cura"), BOLAFOGO("Bola de Fogo"),
     ARMADILHA("Armadilha"), VAZIA("Vazia");
+
     private String descricao;
     private String valor;
     // Uma mensagem a ser mostrada caso o atributo ja tenha sido utilizado
@@ -16,7 +17,7 @@ public enum Attribute {
         inicializaValorAssociado();
     }
 
-    private void setDescricaoMensagem(){
+    private void setDescricaoMensagem() {
         switch (valor) {
             case "Monstro":
                 descricao = "Você encontrou um monstro nessa sala! Ele tem 3 de vida e 1 de dano.\nSó após derrotar ele você pode sair dessa sala.";
@@ -63,7 +64,7 @@ public enum Attribute {
     }
 
     public String getDescricao() {
-        return descricao;
+        return "\n" + descricao;
     }
 
     public int getValor_associado() {
@@ -71,6 +72,6 @@ public enum Attribute {
     }
 
     public String getmensagemAtributoUtilizado() {
-        return mensagemAtributoUtilizado + '\n';
+        return '\n' + mensagemAtributoUtilizado + '\n';
     }
 }

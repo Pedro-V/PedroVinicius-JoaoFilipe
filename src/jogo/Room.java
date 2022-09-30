@@ -124,7 +124,7 @@ public class Room {
             atributo_ativo = false;
     }
 
-     /**
+    /**
      * Return a description of the room in the form:
      * You are in the kitchen.
      * Exits: north west
@@ -133,7 +133,7 @@ public class Room {
      */
 
     public String getLongDescription() {
-        return "Você está " + description + ".\n" + getExitString();
+        return "\nVocê está " + description + ".\n" + getExitString();
     }
 
     public String getAttributeDescription() {
