@@ -99,7 +99,7 @@ public class Game {
             System.out.println("Nada de fugir. É preciso primeiro derrotar o monstro!");
         } else {
             sala_atual = nextRoom;
-            System.out.println(sala_atual.getLongDescription());
+            System.out.print(sala_atual.getLongDescription());
             sala_atual.usaAtributo(jogador);
         }
     }
