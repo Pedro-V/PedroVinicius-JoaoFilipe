@@ -6,7 +6,6 @@ import java.util.concurrent.TimeUnit;
 public class Player {
     private int pontos_vida, pontos_dano;
     private Random gerador = new Random();
-    private Room sala_atual;
     private boolean in_combat;
     private boolean possuiBolaFogo;
 
@@ -15,62 +14,6 @@ public class Player {
         pontos_vida = 10;
         in_combat = false;
         possuiBolaFogo = false;
-    }
-
-    // overloading do construtor: Opcionalmente criamos com uma sala inicial
-    public Player(Room sala_inicial) {
-        pontos_dano = 1;
-        pontos_vida = 10;
-        sala_atual = sala_inicial;
-        in_combat = false;
-        possuiBolaFogo = false;
-    }
-
-    public Room getSala_atual() {
-        return sala_atual;
-    }
-
-    private void printaInfoVitoria() {
-        System.out.println("Uma luz azul brilha no corpo morto do chefe dos monstros...");
-        try {
-            TimeUnit.SECONDS.sleep(2);
-        } catch (InterruptedException e) {
-            System.err.format("IOException: %s%n", e);
-        }
-        System.out.println("Você encontra a safira que tanto procurava, parabéns!");
-        try {
-            TimeUnit.SECONDS.sleep(2);
-        } catch (InterruptedException e) {
-            System.err.format("IOException: %s%n", e);
-        }
-        System.out.println("                         `-+sdmhmMMhyhNMMddm`");
-        System.out.println("                      .smdy+:`  `-smmNy/    :h\\");
-        System.out.println("                    -yNs.          mmhmo.    Md");
-        System.out.println("                  -hNo`           oM- .oNh:  :s");
-        System.out.println("                :dm+`            .Ns    `/dmo.d");
-        System.out.println("               +Mo`              hN        yMMM");
-        System.out.println("             `sN/              /dMmsssoo++///NM");
-        System.out.println("            `hN-             +md/sM.        hNM");
-        System.out.println("           .dm.            +mh:  .Ns      .dm+M");
-        System.out.println("           +My          .oNy-     sM.    :Nd.+M");
-        System.out.println("           +MM+     .:/sNd-       .Ns   sNo  sM");
-        System.out.println("          `+MyMyhdddysmMoydmhs+:smdsM.+Nh-   hN");
-        System.out.println("          `+M.MM:`   -Mo           hMNm/     md");
-        System.out.println("          `+M  hm.   dm`         `+Nmdm+     My");
-        System.out.println("          `/M:  md` /M/        -sNy:  -yNs. .Mo");
-        System.out.println("           `Nh   Nh`Nh      :smd+.      .sNyoM/");
-        System.out.println("            -mh:mh:MmNss:+sdNds:-::///++oosyN-");
-    }
-
-    public boolean checaJogoFinalizado() {
-        if (sala_atual.getAtributo() == Attribute.CHEFE && !sala_atual.atributoEstaAtivo()) {
-            printaInfoVitoria(); // Assim que o boss (chefe) morrer o jogo é finalizado.
-            return true;
-        } else if (pontos_vida == 0) {
-            System.out.println("Você morreu  \u2620 \u2620! Boa sorte na próxima vez.");
-            return true; // A outra forma de finalizar o jogo é com o player morrendo.
-        }
-        return false;
     }
 
     public void printStats() {
@@ -82,13 +25,13 @@ public class Player {
                 "\t\tPontos de vida do monstro: " + monstro.getPontos_vida() + " \uD83D\uDC7A" + "\n");
     }
 
-    public void entra_combate(boolean usoFeitico) {
+    public void entra_combate(Room sala_atual, boolean usoFeitico) {
         if (sala_atual.temMonstro()) {
             Monster monstro = sala_atual.getMonstro();
             if (!monstro.estaVivo())
                 System.out.println(sala_atual.getAttributeDescription());
             else {
-                System.out.println(ataque(monstro, usoFeitico));
+                System.out.println(ataque(sala_atual, usoFeitico));
                 printStats(monstro);
                 // Se o monstro estiver vivo, o monstro da sala tenta atacar
                 sala_atual.ataqueMonstro(this);
@@ -97,7 +40,8 @@ public class Player {
             System.out.println("Não há monstros nessa sala.");
     }
 
-    private String ataque(Monster monstro, boolean usoFeitico) {
+    private String ataque(Room sala_atual, boolean usoFeitico) {
+        Monster monstro = sala_atual.getMonstro();
         int chance = gerador.nextInt(0, 5);
         in_combat = true;
         String resultado = new String();
@@ -155,34 +99,7 @@ public class Player {
             // limitamos a quantidade máxima de HP a 10
             pontos_vida = 10;
     }
-
-    /**
-     * Try to go in one direction. If there is an exit, enter the new
-     * room, otherwise print an error message.
-     */
-    public void goRoom(Command command) {
-        if (!command.hasSecondWord()) {
-            // if there is no second word, we don't know where to go...
-            System.out.println("Ir aonde?");
-            return;
-        }
-
-        String direction = command.getSecondWord();
-
-        // Try to leave current room.
-        Room nextRoom = sala_atual.getExit(direction);
-
-        if (nextRoom == null) {
-            System.out.println("Não há porta nessa direção!");
-        } else if (in_combat) {
-            System.out.println("Nada de fugir. É preciso primeiro derrotar o monstro!");
-        } else {
-            sala_atual = nextRoom;
-            System.out.println(sala_atual.getLongDescription());
-            sala_atual.usaAtributo(this);
-        }
-    }
-
+    
     public void setIn_combat(boolean in_combat) {
         this.in_combat = in_combat;
     }
@@ -193,6 +110,10 @@ public class Player {
 
     public int getPontos_vida() {
         return pontos_vida;
+    }
+
+    public boolean isInCombat() {
+        return in_combat;
     }
 
     public boolean getPossuiBolaFogo() {

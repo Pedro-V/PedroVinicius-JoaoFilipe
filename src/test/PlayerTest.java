@@ -4,8 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import jogo.Command;
-import jogo.CommandWord;
 import jogo.Monster;
 import jogo.Player;
 
@@ -38,13 +36,5 @@ public class PlayerTest {
         jogador.sofre_dano(dano_monstro);
         int vida_apos_dano = jogador.getPontos_vida();
         assertEquals(vida_apos_dano, vida_original - dano_monstro);
-    }
-
-    @Test
-    public void testSair_da_sala_em_combate() {
-        Player jogador = new Player();
-        Command comando = new Command(CommandWord.GO, "leste");
-        jogador.goRoom(comando);
-        //jogador.goRoom(command);
     }
 }

@@ -1,8 +1,6 @@
 package jogo;
 
-import java.util.HashMap;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Class Room - a room in an adventure game.
