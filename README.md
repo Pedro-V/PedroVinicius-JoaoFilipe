@@ -14,7 +14,7 @@
 
 O jogo descreve a aventura do jogador enquanto ele explora o [Castelo Poxim](https://pt.wikipedia.org/wiki/Rio_Poxim) em busca de uma safira. Ao longo dessa aventura, ele entra em diversas salas, e algumas delas contêm características especiais: Monstros, armadilhas, cura e o Chefão. O jogador só consegue a Safira após derrotar o Chefão. 
 
-Algumas observações fundamentais sobre o jogo:
+Algumas observações importantes sobre o jogo:
 * Os comandos de movimentação são "ir" + "leste|oeste|norte|sul". O comando de ataque é "atacar".
 * O jogador tem 10 de vida e 1 de dano. Os monstros tem 3 de vida e 1 de dano. O Chefão tem 8 de vida e 2 de dano.
 * O combate Jogador vs Monstro é baseado em **turnos**: O jogador ataca, podendo acertar ou errar (e se acertar, podendo dar dano crítico ou não) e, em seguida, o monstro daquela sala ataca, podendo acertar ou errar, mas sem chance de crítico.
@@ -24,31 +24,6 @@ Algumas observações fundamentais sobre o jogo:
 * Existem duas **salas com cura**. Quando o jogador entra nela, automaticamente recebe um cura, mas apenas na primeira vez que visitou tal sala.
 * O limite superior da vida do jogador é 10. Nunca ultrapassa esse limite.
 * A **sala de armadilha** sempre dá dano automático no momento que um jogador entra nela, mesmo se não for a primeira visita à sala.
-
-## To-do (risque as feitas)
-
-* Geral (Pegue algum e coloque no seu campo)
-  * Melhorar a formatação das mensagens do jogo
-
-* João
-  * ~~Finalizar a adaptação da classe `Game`~~
-  * ~~Botar o mapa nesse README~~
-  * ~~Implementar funcionalidade para o jogador só poder sair duma sala desde que não esteja mais em combate (Ou seja, derrotou o monstro daquela sala)~~
-  * Melhorar a documentação do código com comentários claros e eficientes
-
-* Pedro
-  * ~~Implementar a variável de atributo ativo ou não na classe `Room`~~
-  * ~~Implementar o comportamento de outras salas com atributos: Quiz, Cura, Armadilha.~~
-  * ~~Escrever testes~~
-  * ~~Criar classe Monster~~
-  * ~~Criar classe Player~~
-  * ~~Traduzir e adaptar textos do jogo~~
-  * ~~Criar case para o comando ATTACK~~
-  * ~~Implementar os atributos/caracteristicas especiais da sala como um ENUM~~
-  * ~~Mover o comportamento da classe Game pra a classe Player~~
-  * ~~Implementar o fim do jogo quando jogador morre ou quando derrota o chefe~~
-  * ~~Implementar a bola de fogo na classe `Player`~~
-  * ~~Printar uma safira em ascii ao final do jogo.~~
 
 ## Referências
 * Objects First with Java: A Practical Introduction using BlueJ
